@@ -1,0 +1,12 @@
+*Comandos de Criação
+
+*Listar
+
+*Comandos de Status
+- git remote : Verfica se existe um repositorio remoto
+- git remote -v : Verfica se existe um repositorio remoto e exibi o path
+
+*Comandos de Controle
+- git remote add origin "PATH" : Adiciona um repositorio remoto atraves de um PATH
+
+*Comandos de User
