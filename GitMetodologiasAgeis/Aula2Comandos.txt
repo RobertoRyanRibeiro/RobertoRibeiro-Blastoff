@@ -1,16 +1,19 @@
 *Comandos de Criação
-- git init : Cria um repositorio local
+-mkdir : Cria um diretorio no caminho atual
+-touch : Cria um arquivo no caminho atual
 
 *Listar
-- ls -a: Lista todas as pastas e arquivos naquele caminho incluindo os ocultos
+- ls : Lista todas as pastas e arquivos naquele caminho 
 
-*Comandos de Status
-- git status : exibi as informações sobre o repostitorio
+*Comandos de Navegação
+- cd : Navega para um caminho desejado 
 
-*Comandos de Controle
-- git add : adiciona um ou varios arquivos no container
-- git commit -m "": informa sobre o que é o container ou o que foi modificado 
-- git log : Informa sobre os commits e quem realizou 
-- git log --oneline : Informa sobre os commits e quem realizou de forma resumida
+*Comandos de Tela
+- clear : limpa a tela
 
 *Comandos de User
+- git config --global user.name "name"
+- git config --global user.email "email"
+	*Exibir
+	  - git user.name 
+	  - git user.email
