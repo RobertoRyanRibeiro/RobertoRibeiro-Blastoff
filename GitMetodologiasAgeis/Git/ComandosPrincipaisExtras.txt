@@ -1,0 +1,11 @@
+*Comandos de Criação
+
+*Listar
+
+*Comandos de Status
+
+*Comandos de Controle
+- git rebase BRANCH : sobreescrevendo sua arvore colocando sua branch na ponta da BRANCH
+- git commit --amend : permiti refazer o comentario de um commit
+
+*Comandos de User
