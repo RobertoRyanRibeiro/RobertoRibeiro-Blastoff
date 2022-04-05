@@ -1,0 +1,12 @@
+*Comandos de Criação
+
+*Listar
+
+*Comandos de Status
+- git log --oneline  --graph --all : mostra todas as informações e todas as branch
+
+*Comandos de Controle
+- git merge BRANCH : mistura a branch atual com a BRANCH
+	*Checkout
+	  - git checkout -b NAME : cria uma branch com o nome[NAME]
+*Comandos de User

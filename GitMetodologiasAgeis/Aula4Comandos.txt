@@ -4,7 +4,7 @@
 
 *Comandos de Status
 - git log --graph : Mostra o grafo ce commits
-- git branch : verifica o status da master
+- git branch : verifica o branch que o user se encontra
 
 *Comandos de Controle
 - git commit -am "" : um atalho para adicionar e comentar 
