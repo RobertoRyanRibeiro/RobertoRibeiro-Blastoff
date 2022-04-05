@@ -1,0 +1,13 @@
+*Comandos de Criação
+
+*Listar
+
+*Comandos de Status
+
+*Comandos de Controle
+- git clone http/ssh :  clona o repositorio da origin
+- git push : Sobe os dados para repositorio remoto 
+- git pull : Baixa os dados no repositorio remoto 
+- git fetch : Equivale ao git pull ,mas n faz o merge
+
+*Comandos de User
