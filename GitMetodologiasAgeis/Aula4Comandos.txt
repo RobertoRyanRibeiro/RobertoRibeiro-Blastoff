@@ -1,0 +1,19 @@
+*Comandos de Criação
+
+*Listar
+
+*Comandos de Status
+- git log --graph : Mostra o grafo ce commits
+- git branch : verifica o status da master
+
+*Comandos de Controle
+- git commit -am "" : um atalho para adicionar e comentar 
+	*Checkout
+	  - git checkout : verifica uma versão anterior ou desfaz para versão original
+	  - git checkout master : volta para a branch master 
+	*Reset
+	  - git reset HEAD : reseta um arquivo que foi add
+	  - git reset HEAD --hard: reseta um arquivo que foi commit
+- git diff : mostra a diferença entre versões
+
+*Comandos de User
