@@ -1,0 +1,16 @@
+*Comandos de Criação
+- git init : Cria um repositorio local
+
+*Listar
+- ls -a: Lista todas as pastas e arquivos naquele caminho incluindo os ocultos
+
+*Comandos de Status
+- git status : exibi as informações sobre o repostitorio
+
+*Comandos de Controle
+- git add : adiciona um ou varios arquivos no container
+- git commit -m "": informa sobre o que é o container ou o que foi modificado 
+- git log : Informa sobre os commits e quem realizou 
+- git log --oneline : Informa sobre os commits e quem realizou de forma resumida
+
+*Comandos de User

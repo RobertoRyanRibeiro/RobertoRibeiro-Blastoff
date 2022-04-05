@@ -1,0 +1,19 @@
+*Comandos de Criação
+-mkdir : Cria um diretorio no caminho atual
+-touch : Cria um arquivo no caminho atual
+
+*Listar
+- ls : Lista todas as pastas e arquivos naquele caminho 
+
+*Comandos de Navegação
+- cd : Navega para um caminho desejado 
+
+*Comandos de Tela
+- clear : limpa a tela
+
+*Comandos de User
+- git config --global user.name "name"
+- git config --global user.email "email"
+	*Exibir
+	  - git user.name 
+	  - git user.email
