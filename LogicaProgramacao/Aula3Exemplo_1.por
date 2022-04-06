@@ -1,13 +1,14 @@
 programa
 {
-	cadeia res 
-	real N1,N2,N3,N4
-	real media
-		
 	funcao inicio()
 	{
+		cadeia res 
+		real N1,N2,N3,N4
+		real media
+	
 		leia(N1,N2,N3,N4)
-		media = ((N1+N2+N3+N4)/4)
+		media = ((N1+N2+N3+N4)/
+4)
 		se(media>=7) 
 			res = "Aprovado"
 		senao 
