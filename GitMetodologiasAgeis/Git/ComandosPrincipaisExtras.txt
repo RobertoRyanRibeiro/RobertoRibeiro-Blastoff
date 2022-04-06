@@ -7,5 +7,10 @@
 *Comandos de Controle
 - git rebase BRANCH : sobreescrevendo sua arvore colocando sua branch na ponta da BRANCH
 - git commit --amend : permiti refazer o comentario de um commit
+- git revert HASH : reverete as alterações de uma HASH ,mas ela permanece no historico
+- git rebase --continue : debug erros individualmente continuamente 
+- git rebase -i master: ajustando o historico 
+- git reflog : mostra o historico de commits
+- git stash : guarda um git 	
 
 *Comandos de User
