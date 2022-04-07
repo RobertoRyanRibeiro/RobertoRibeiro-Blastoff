@@ -63,7 +63,7 @@ Inicio
     leia(numBuscar)
 
   //Process
-  enquanto inicial <= final e nao achou faca
+  enquanto (inicial <= final) e nao achou faca
       posNum <- (inicial + final) DIV 2
       codNum <- vet[posNum]
 
