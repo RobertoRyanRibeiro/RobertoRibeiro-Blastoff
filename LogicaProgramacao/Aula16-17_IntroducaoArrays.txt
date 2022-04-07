@@ -1,0 +1,6 @@
+Definição de Vetor em VisualG/Algoritmo
+
+*Name_vetor : vetor[i..f] de Tipo_vetor
+
+i = valor inicial
+f = valor final
