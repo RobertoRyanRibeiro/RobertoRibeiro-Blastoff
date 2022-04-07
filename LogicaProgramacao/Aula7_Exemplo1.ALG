@@ -6,15 +6,16 @@ Algoritmo "semnome"
 // Data atual  : 4/7/2022
 Var
 // Seção de Declarações das variáveis 
-   x,y,z : int
+   x,y,z : inteiro
 
 Inicio
 // Seção de Comandos, procedimento, funções, operadores, etc...
-   escraval("Digite o valor do X")
+
+   escreval("Digite o 1 valor e pressione ENTER")
    leia(x)
-   escraval("Digite o valor do Z")
+   escreval("Digite o 2 valor e pressione ENTER")
    leia(y)
    z <- x + y
-   escreva(z)
+   escreva("O valor da soma de x + y foi:",z)
    
 Fimalgoritmo
