@@ -134,7 +134,7 @@ funcao isFloat(variable : caracter) : logico
     //Se não for
       senao
         result <-  Falso
-        escreval("O valor digitado precisa ser numerico")
+        escreval("O dado digitado precisa ser um valor numerico positivo")
       fimse
 
     fimescolha //Fim Switch
