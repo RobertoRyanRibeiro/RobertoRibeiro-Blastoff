@@ -1,10 +1,10 @@
-Algoritmo "SalarioFuncionario"
-//Uma Empresa de desenvolvimento de softwares paga a seu vendedor um fixo
-//de R$ 500,00 por mês, mais um bônus de R$ 50,00 por sistema vendido.
-//Faça um programa que leia quantos softwares o funcionário vendeu
-//e determine o salário total do funcionário.
-//Mostre o salário final do vendedor.
-   
+Algoritmo "KilometragemCombustivel"
+//Realizarei uma viagem de vários dias em meu automóvel, e gostaria de saber a
+//quilometragem média por litro de gasolina.Para isto, anotarei a quilometragem
+//no velocímetro ao sair de viagem, e depois ao chegar;ambém vou somar toda a
+//gasolina que comprar para o carro. Faça uma página que com estes dados mostre
+//quantos km fiz,em média, por litro de gasolina.
+
 //Verificando para inteiro e tratamento
 funcao isInt(variable : caracter) : logico
    var
@@ -58,7 +58,7 @@ funcao isInt(variable : caracter) : logico
           interrompa
         fimse
       fimpara //Fim para
-      
+
     //Verificando se a string é numerica
       se (isNumeric) entao
         result <- isNumeric
@@ -145,13 +145,13 @@ fimfuncao //Fim isFloat
 
 
 //Total de Salario do Funcionario
-funcao salTotal(salFunc : real ; bonus : real ; quantVend : inteiro) : real
+funcao kmPLitro(kmInicial : real ;kmFinal : real ; lit : real ) : real
   var
   //Total
   result : real
   inicio
   //Process
-  result <- salFunc + (bonus * quantVend)
+  result <- (kmFinal - kmInicial)/lit
   //Return
   retorne result
 fimfuncao //Fim salTotal
@@ -160,14 +160,14 @@ fimfuncao //Fim salTotal
 Var
  //Declarando var
  //Salario
- slFc : caracter
- salFunc : real
+ kmIn : caracter
+ kmInicial : real
  //Bonus
- bon : caracter
- bonus : real
+ kmFl : caracter
+ kmFinal : real
  //Quantidade de Vendas
- qtVend : caracter
- quantVend : inteiro
+ lit : caracter
+ litros : real
  //Auxiliar opção
  op : caracter
 Inicio
@@ -176,33 +176,33 @@ repita
      repita
         escreval("======================================")
         //Configurando
-        escreva("Insira o Salario fixo:")
-        leia(slFc)
-        escreva("Insira o valor do bonus por venda:")
-        leia(bon)
+        escreva("Insira a kilometragem inicial:")
+        leia(kmIn)
+        escreva("Insira a kilometragem final:")
+        leia(kmFl)
         limpatela //Limpando a tela
-     ate (isFloat(slFc)) e (isFloat(bon))
+     ate (isFloat(kmIn)) e (isFloat(kmFl))
      //Atualizando var
-     salFunc <- caracpnum(slFc)
-     bonus <- caracpnum(bon)
+     kmInicial <- caracpnum(kmIn)
+     kmFinal <- caracpnum(kmFl)
      //Input
      repita
      //Exibir Valores
      escreval("")
      escreval("======================================")
-     escreval("Salario Fixo:R$",salFunc)
-     escreval("Bonus p/Venda:R$",bonus)
+     escreval("Kilometragem Inicial:",kmInicial,"Km")
+     escreval("Kilometragem Final:",kmFinal,"Km")
      escreval("======================================")
-     escreva("Insira a quantidade de vendas desse mes:")
-     leia(qtVend)
+     escreva("Insira a quantidade de combustivel que foi colocada:")
+     leia(lit)
      limpatela
-     ate (isInt(qtVend))
+     ate (isInt(lit))
      //Atualizando var
-     quantVend <- caracpnum(qtVend)
+     litros <- caracpnum(lit)
      escreval("")
      escreval("======================================")
-     escreval("O Total:R$",salTotal(salFunc,bonus,quantVend))
-     
+     escreval("Kilometragem p/Litro:R$",kmPLitro(kmInicial,kmFinal,litros),"Km/L")
+
      //Verificando o Loop
      escreval("")
      escreval("")
@@ -220,6 +220,6 @@ repita
          limpatela
       fimse
      ate (op = "s") ou (op = "n") //fim repita
-     
+
 ate (op <> "s")
 Fimalgoritmo
