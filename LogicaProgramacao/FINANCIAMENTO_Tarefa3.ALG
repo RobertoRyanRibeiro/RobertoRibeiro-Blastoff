@@ -1,9 +1,9 @@
-Algoritmo "KilometragemCombustivel"
-//Realizarei uma viagem de vários dias em meu automóvel, e gostaria de saber a
-//quilometragem média por litro de gasolina.Para isto, anotarei a quilometragem
-//no velocímetro ao sair de viagem, e depois ao chegar;ambém vou somar toda a
-//gasolina que comprar para o carro. Faça uma página que com estes dados mostre
-//quantos km fiz,em média, por litro de gasolina.
+Algoritmo "Financiamento"
+//Faça uma página que receba o valor do salário de uma pessoa e o valor de um
+//financiamento pretendido. Caso o financiamento seja menor ou igual a 5 vezes o
+//salário da pessoa, a página deverá escrever "Financiamento Concedido"; senão,
+//escreverá "Financiamento Negado". Independente de conceder ou não o
+//financiamento, a página escreverá depois a frase "Obrigado por nos consultar."
 
 //Verificando para inteiro e tratamento
 funcao isInt(variable : caracter) : logico
@@ -144,30 +144,30 @@ funcao isFloat(variable : caracter) : logico
 fimfuncao //Fim isFloat
 
 
-//kmPLitro
-funcao kmPLitro(kmInicial : real ;kmFinal : real ; lit : real ) : real
+//Financiamento
+procedimento financiamento(sal : real ; financ : real)
   var
-  //Total
-  result : real
   inicio
   //Process
-  result <- (kmFinal - kmInicial)/lit
-  //Return
-  retorne result
-fimfuncao //Fim kmPLitro
+     se ((sal * 5) >= financ) entao
+        escreval("Financiamento Concedido")
+     senao
+        escreval("Financiamento Negado")
+     escreval("")
+     fimse
+     escreval("Obrigado por nos consultar")
+     
+fimprocedimento //Fim financiamento
 
 //Main
 Var
  //Declarando var
  //Salario
- kmIn : caracter
- kmInicial : real
- //Bonus
- kmFl : caracter
- kmFinal : real
- //Quantidade de Vendas
- lit : caracter
- litros : real
+ sl : caracter
+ salario : real
+ //financiamento
+ finac : caracter
+ financiar : real
  //Auxiliar opção
  op : caracter
 Inicio
@@ -176,32 +176,25 @@ repita
      repita
         escreval("======================================")
         //Configurando
-        escreva("Insira a kilometragem inicial:")
-        leia(kmIn)
-        escreva("Insira a kilometragem final:")
-        leia(kmFl)
+        escreva("Insira o Salario :")
+        leia(sl)
+        escreva("Insira o valor do Financiamento:")
+        leia(finac)
         limpatela //Limpando a tela
-     ate (isFloat(kmIn)) e (isFloat(kmFl))
+     ate (isFloat(sl)) e (isFloat(finac))
      //Atualizando var
-     kmInicial <- caracpnum(kmIn)
-     kmFinal <- caracpnum(kmFl)
-     //Input
-     repita
+     salario <- caracpnum(sl)
+     financiar <- caracpnum(finac)
+     
      //Exibir Valores
      escreval("")
      escreval("======================================")
-     escreval("Kilometragem Inicial:",kmInicial,"Km")
-     escreval("Kilometragem Final:",kmFinal,"Km")
+     escreval("Salario:R$",salario)
+     escreval("Financiamento:R$",financiar)
      escreval("======================================")
-     escreva("Insira a quantidade de combustivel que foi colocada:")
-     leia(lit)
-     limpatela
-     ate (isInt(lit))
-     //Atualizando var
-     litros <- caracpnum(lit)
-     escreval("")
-     escreval("======================================")
-     escreval("Kilometragem p/Litro:R$",kmPLitro(kmInicial,kmFinal,litros),"Km/L")
+
+     //Process
+     financiamento(salario,financiar)
 
      //Verificando o Loop
      escreval("")
@@ -219,7 +212,7 @@ repita
          leia(op)
          limpatela
       fimse
-     ate (op = "s") ou (op = "n") //fim repita
+     ate (op <> "s") ou (op <> "n") //fim repita
 
 ate (op <> "s")
 Fimalgoritmo
