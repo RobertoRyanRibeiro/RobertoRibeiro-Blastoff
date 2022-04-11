@@ -1,0 +1,44 @@
+*Chapeu
+-Atributos
+tamanho G
+cor Marrom
+tipo Cearense
+nome Tira Chapeu
+local Ceara
+marca Chapeleiros
+-Metodos
+Vestir
+-Estado
+G
+Marrom
+Cearense
+Tira Chapeu
+Ceara
+Chapeleiros
+
+*Notebook
+-Atributos
+tamanho Tela 1080 Full HD
+Processador Intel I7 8Ger
+Placa Video GForce 1050TI
+corP Preto
+corS vermelho
+tipo NoteBook Gamer
+nome Predator
+local Ceara
+marca Acer
+-Metodos
+Ligar
+Jogar
+Programar
+Assistir
+-Estado
+Tela 1080 Full HD
+Intel I7 8Ger
+GForce 1050TI
+Preto
+vermelho
+NoteBook Gamer
+Predator
+Ceara
+Acer
