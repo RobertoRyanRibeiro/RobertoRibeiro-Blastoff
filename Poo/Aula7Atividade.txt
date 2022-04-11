@@ -11,6 +11,8 @@ public class Lutador{
   public int Derrotas { get; set; }
   public int Empates { get; set; }
   
+  
+  //[Custom Properties]
   //Peso
   public void Peso(){ get{ return peso; } 
     set {
