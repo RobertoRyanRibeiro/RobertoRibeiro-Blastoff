@@ -1,32 +1,57 @@
 Classe ContaBanco
 //Atributos
-public int numconta.  
-protect char tipo; 
-private string dono;
-private float saldo ; 
-private bool status;
+[Auto-Prop]
+public int NumConta {get; set;}
+public string Tipo {get;set;}
+public string Dono {get; set;}
+public float Saldo {get; set;}
+public bool Status {get; set;}
 
-public ContaBanco(numConta,tipo,dono,saldo,status){
-  this.numConta = numConta;
-  this.tipo = tipo;
-  this.dono = dono;
-  saldo = 0;
-  status = false;
+public ContaBanco(int numConta,string tipo,string dono){
+  NumConta  = numConta;
+  Tipo = tipo;
+  Dono = dono;
+  Saldo = 0;
+  Status = false;
 }
 
 //Metodos
-public void abrirConta(){
-(...)
+public void abrirConta(string t){
+  Tipo =  t;
+  Status = true;
+  if(Tipo == "CC")	
+	saldo = 50;
+  else if (Tipo == "CP") 
+	saldo = 150;
 }
 public void fecharConta(){
-(...)
+  if(saldo > 0)
+	Console.write("Conta com dinheiro");
+  else if(saldo < 0)  
+	Console.Writeline("Conta em débito");
+  else
+	Status = false;
 }
-public void depositar(){
-(...)
+public void depositar(float v){
+  if (Status = true)
+	Saldo += v;
+  else 
+    Console.Writeline("Impossivel depositar");
 }
-public void sacar(){
-(...)
+public void sacar(float v){
+  if (Status = true)
+ 	if(v < saldo)
+	  Saldo -= v;
+	else
+	  Console.Writeline("Impossivel sacar"); 
+  else 
+    Console.Writeline("Impossivel sacar");
+
 }
 public void pagarMensal(){
-(...)
+  float v;
+  if( Tipo == "CC")
+	v = 12
+  else if(Tipo == "CP")
+	v = 20
 }
