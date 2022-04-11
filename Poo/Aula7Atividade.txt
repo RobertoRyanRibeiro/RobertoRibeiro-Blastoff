@@ -1,0 +1,82 @@
+public class Lutador{
+  //Attributes
+  private float peso;
+  private string categoria;
+  //[Auto-Properties]
+  public string Nome { get; set; }
+  public string Nacionalidade { get; set; }
+  public int Idade { get; set; }
+  public float Altura { get; set; }
+  public int Vitorias { get; set; }
+  public int Derrotas { get; set; }
+  public int Empates { get; set; }
+  
+  //Peso
+  public void Peso(){ get{ return peso; } 
+    set {
+       peso = value;
+       Categoria();
+    }
+   }  
+  
+  //Categoria
+  public void Categoria(){ get{ return categoria; } 
+    set {
+       if( peso < 52.2 ) ;
+         categoria =  "Inválido";
+       else if( peso <= 70.3)
+         categoria = "Leve";
+       else if( peso <= 83.9)
+         categoria = "Médio";
+       else if( peso <= 120.2)
+         categoria = "Pesado";
+       else
+         categoria =  "Inválido";
+    }
+   }
+
+  //Constructor
+  public Lutador(string no, string nac, int id, float al, float pe, int vi, int de, int emp){
+     Nome = no;
+     Nacionalidade = nac;
+     Idade = id;
+     Altura = al;
+     Peso = pe;
+     Vitorias = vi;
+     Derrotas = de;
+     Empates = emp;
+  }
+
+  //Metodos
+  public void Apresentar(){
+    Console.WriteLine($"Lutador {Nome}");
+    Console.WriteLine($"Origem {Nacionalidade}");
+    Console.WriteLine($"{Idade} anos");
+    Console.WriteLine($"{Altura} m de altura");
+    Console.WriteLine($"Pesando {Peso} kg");
+    Console.WriteLine($"Vitorias {Vitorias}");
+    Console.WriteLine($"Derrotas {Derrotas}");
+    Console.WriteLine($"Empates {Empates}");
+  }
+
+  public void Status(){
+    Console.WriteLine(Nome);
+    Console.WriteLine($"é um peso {Categoria}")
+    Console.WriteLine($"{Vitorias} vitórias")
+    Console.WriteLine($"{Derrotas} derrotas")
+    Console.WriteLine($"{Empates} empates")
+  }
+
+  public void GanharLuta(){
+     Vitorias += 1;   
+  }
+
+  public void PerderLuta(){
+     Derrotas += 1;
+  }
+
+  public void EmpatarLuta(){
+     Empates += 1;
+  }
+}
+
