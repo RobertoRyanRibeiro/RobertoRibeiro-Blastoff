@@ -1,0 +1,10 @@
+Getters
+e = New class()
+e.getTotDoc()
+Setters
+e = New class()
+e.setTotDoc()
+
+Construct
+Uma forma de realizar uma tarefa ou ação sem necessidade do cliente.
+1º Ação executada na instancia da classe 
