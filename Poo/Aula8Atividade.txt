@@ -1,10 +1,10 @@
 public class luta{
   //Attributes
   //[Auto-properties]
-  private Lutador Desafiado { get; set;} 
-  private Lutador Desafiante { get; set;}
-  private inteiro Rounds { get; set; }
-  private bool Aprovada { get; set; }
+  public Lutador Desafiado { get; set;} 
+  public Lutador Desafiante { get; set;}
+  public int Rounds { get; set; }
+  public bool Aprovada { get; set; }
  
   //Metodos
   public void marcarLuta(Lutador l1, Lutador l2){

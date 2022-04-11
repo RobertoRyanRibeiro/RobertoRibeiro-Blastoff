@@ -1,0 +1,44 @@
+public class Pesso{
+  //Attributes
+  //[Auto-properties]
+  public string Nome { get; set;} 
+  public int Idade { get; set;}
+  public string Sexo { get; set; }
+
+  //Metodos
+  public void FazerAniv(){}
+
+}
+
+public class Aluno : Pessoa {
+  //Attributes
+  //[Auto-properties]
+  public int Matr{ get; set;} 
+  public string Curso { get; set;}
+
+  //Metodos
+  public void CancelarMatr(){}
+
+}
+
+public class Professor : Pessoa {
+  //Attributes
+  //[Auto-properties]
+  public string Especialidade{ get; set;} 
+  public float Salario{ get; set;}
+
+  //Metodos
+  public void ReceberAum(){}
+
+}
+
+public class Funcionario : Pessoa {
+  //Attributes
+  //[Auto-properties]
+  public string Setor{ get; set;} 
+  public bool Trabalhando{ get; set;}
+
+  //Metodos
+  public void mudarTrabalho(){}
+
+}
