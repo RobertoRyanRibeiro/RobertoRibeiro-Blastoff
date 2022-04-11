@@ -1,0 +1,32 @@
+Classe ContaBanco
+//Atributos
+public int numconta.  
+protect char tipo; 
+private string dono;
+private float saldo ; 
+private bool status;
+
+public ContaBanco(numConta,tipo,dono,saldo,status){
+  this.numConta = numConta;
+  this.tipo = tipo;
+  this.dono = dono;
+  saldo = 0;
+  status = false;
+}
+
+//Metodos
+public void abrirConta(){
+(...)
+}
+public void fecharConta(){
+(...)
+}
+public void depositar(){
+(...)
+}
+public void sacar(){
+(...)
+}
+public void pagarMensal(){
+(...)
+}
