@@ -1,0 +1,83 @@
+public Interface Controlador {
+
+  public void Ligar();
+  public void Desligar();
+  public void AbrirMenu();
+  public void FecharMenu();
+  public void MaisVolume();
+  public void MenosVolume();
+  public void LigarMudo();
+  public void DesligarMudo();
+  public void Play();
+  public void Pause();
+}
+
+
+public class ControleRemoto : Controlador{
+
+  //Attributes
+  [Auto-Properties]
+  public int Volume { get; set; }
+  public bool Ligado { get; set; }
+  public bool Tocando { get; set; }
+
+  //Metodos
+  public ControleRemor(){
+    Volume = 50;
+    Ligado = false;
+    Tocando = false;
+  }
+
+
+  public void Ligar(){
+    Ligado = true;
+  }
+
+  public void Desligar(){
+    Ligado = false;
+  }
+
+  public AbrirMenu(){
+    Console.WriteLine(Ligado);
+    Console.WriteLine(Volume);
+    for(int i = 0 ; i < Volume ;i+=10){
+      Console.WriteLine("|");
+    }
+    Console.WriteLine(Tocando);
+  }
+
+  public FecharMenu(){
+    Console.WriteLine("Fechando Menu...");
+  }
+
+  public MaisVolume(){
+    if (Ligado)
+      Volume += 1;
+  }
+
+  public MenosVolume(){
+    if (Ligado)
+      Volume -= 1;
+  }
+
+  public LigarMudo(){
+    if(Ligado && Volume > 0)
+      Volume = 0;      
+  }
+
+  public DesligarMudo(){
+    if(Ligado && Volume > 0)
+      Volume = 50;
+  }
+
+  public Play(){
+    if(Ligado && !Tocando)
+      Tocando = true;
+  }
+
+  public Pause(){
+    if(Ligado && Tocando)
+      Tocando = false;
+  }
+}
+
