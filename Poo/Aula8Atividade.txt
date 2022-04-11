@@ -1,0 +1,47 @@
+public class luta{
+  //Attributes
+  //[Auto-properties]
+  private Lutador Desafiado { get; set;} 
+  private Lutador Desafiante { get; set;}
+  private inteiro Rounds { get; set; }
+  private bool Aprovada { get; set; }
+ 
+  //Metodos
+  public void marcarLuta(Lutador l1, Lutador l2){
+    if(l1.Categoria == l2.Categoria) && (l1 != l2)    
+      Aprovada = true;
+      Desafiado = l1;
+      Desafiante = l2;
+    else 
+      Aprovada = false;
+      Desafiado = null;
+      Desafiante = null;
+  }
+ 
+  public void lutar(){
+    int vencedor;
+    if(Aprovada){
+      Desafiado.Apresentar();
+      Desafiante.Apresentar();
+      vencedor = random.range(0,2);
+      switch(vencedor){
+        case 0 : //Empate
+          Console.WriteLine("Empatou");
+          Desafiado.EmpatarLuta();
+          Desafiante.EmpatarLuta();
+          break;
+        case 1 : // Ganhou Desafiado
+          Console.WriteLine($"{Desafiado.Nome} foi o vencedor");
+          Desafiado.GanharLuta();
+          Desafiante.PerdeLuta();
+          break;
+        case 2 : // Ganhou Desafiante
+          Console.WriteLine($"{Desafiante.Nome} foi o vencedor");
+          Desafiado.PerdeLuta();
+          Desafiante.GanharLuta();
+          break;
+      }
+    }else
+      COnsole.WriteLine("Luta não pode acontecer");
+  }  
+}
