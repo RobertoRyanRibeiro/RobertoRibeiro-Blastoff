@@ -1,0 +1,46 @@
+*SobrePosição*
+public abstract class Animal{
+  //Attributes
+  //[Auto-Properties]
+  protect float Peso { get; set; }
+  protect int Idade { get; set; }
+  protect int Menbros { get; set; }
+
+  //Metodo
+  public abstract void EmitirSom(){}
+}
+
+public class Mamifero : Animal{
+  
+  //Attributes
+  //[Auto-Properties]
+  protect string CorPelo { get; set;}
+
+  public override void EmitirSom(){
+    Console.WriteLine("Som de Mamifero");
+  }
+}
+
+public class Lobo : Mamifero{
+
+  public void EmitirSom(){
+   Console.WriteLine("Auuuuuu!");
+  }
+}
+
+public class Cachorro : Lobo {
+
+  public override void EmitirSom(){
+    COnsole.WriteLine("Au!Au!Au!");
+  }
+}
+
+*SobreCarga*
+
+public class Cachorro : Lobo{
+
+  public void Reagir(string frase){}
+  public void Reagir(int hora, int min){}
+  public void Reagir(bool dono){}
+  public void Reagir(int idade,float peso){}
+}
