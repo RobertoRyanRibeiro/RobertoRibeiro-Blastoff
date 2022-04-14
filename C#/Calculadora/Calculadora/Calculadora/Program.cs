@@ -19,6 +19,8 @@ namespace Calculadora
             Console.WriteLine("3-Divisão");
             Console.WriteLine("4-Multiplicação");
             Console.WriteLine("0-Sair");
+            Console.WriteLine("============================");
+            Console.Write("Selecione a op:");
             int op = int.Parse(Console.ReadLine());
                 
             switch (op)
@@ -27,7 +29,7 @@ namespace Calculadora
                 case 2: Subt(); break;
                 case 3: Div();  break;
                 case 4: Mult(); break;
-                case 0: return;
+                case 0: System.Environment.Exit(0); break;
                 default: Menu();break;
             }
         }
