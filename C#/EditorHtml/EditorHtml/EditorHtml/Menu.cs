@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 
 namespace EditorHtml
 {
@@ -15,8 +16,19 @@ namespace EditorHtml
 
             DrawScren();
             WriteOptions();
-            short op = short.Parse(Console.ReadLine());
-            HandleMenuOption(op);
+            try
+            {
+                short op = short.Parse(Console.ReadLine());
+                HandleMenuOption(op);
+            }
+            catch (Exception ex)
+            {
+                Console.Clear();
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
+                Menu.Show();
+            }
+
         }
 
         public static void DrawScren()
@@ -71,7 +83,7 @@ namespace EditorHtml
 
         public static void HandleMenuOption(short op)
         {
-            switch (op) 
+            switch (op)
             {
                 case 1: Editor.Show(); break;
                 case 2:
@@ -82,7 +94,7 @@ namespace EditorHtml
                         Viewer.Show(path);
                         break;
                     }
-               case 0:
+                case 0:
                     {
                         Console.Clear();
                         Environment.Exit(0);
