@@ -7,13 +7,11 @@ namespace Tarefa2.Entities
     public class Player
     {
         public string Name { get; set; }
-        public string Description { get; set; } 
         public int Life { get; private set; }
 
-        public Player(string name,string dscp)
+        public Player(string name)
         {
             Name = name;
-            Description = dscp;
             Life = 3;
         }
 
@@ -21,5 +19,10 @@ namespace Tarefa2.Entities
         {
             Life -= dmg;
         }
+        public void RestartLive(int live)
+        {
+            Life = live;
+        }
+
     }
 }

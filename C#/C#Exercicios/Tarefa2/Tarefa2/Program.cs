@@ -7,8 +7,11 @@ namespace Tarefa2
     internal class Program
     {
         static void Main(string[] args)
-        {
-            Menu.DrawScreen();
+        { 
+            //Titulo
+            Console.Title = "GambleGamer";
+
+            LoginMenu.MenuScreen();
         }
     }
 }

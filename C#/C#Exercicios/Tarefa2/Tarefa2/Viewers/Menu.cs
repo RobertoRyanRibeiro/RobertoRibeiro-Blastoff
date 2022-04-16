@@ -1,16 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Tarefa2.Entities;
 
 namespace Tarefa2.Viewers
 {
     public static class Menu
     {
+        //Entities
+        //Partida
+        public static GambleMatch gambleMatch { get; set; }
         public static bool Confirmed { get; private set; }
 
-        //Desenhando a Tela
-        public static void DrawScreen()
+
+        public static void MenuScreen(Player player)
         {
+            //DrawView
+            DrawScreen();
+            //Logic
+            ControlerScreen(player);
+        }
+
+        //Desenhando a Tela
+        private static void DrawScreen()
+        {
+            //Resetando Config
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
 
             //Desenhando a Tela
@@ -18,18 +35,28 @@ namespace Tarefa2.Viewers
             MiddleMenu();
             TopBottomMenu();
 
+        }
+
+        //Logica do Menu
+        private static void ControlerScreen(Player player)
+        {
+            //Criando Partida
+            if(gambleMatch == null)
+               gambleMatch = new GambleMatch(player);
+
             Confirmed = false;
             int op = 0;
+            //Colocando o Curso Invisivel
+            Console.CursorVisible = false;
 
             do
             {
                 //Exibindo as Opções
                 WriteOp(op);
                 op = SelectOption(op, Console.ReadKey().Key);
-
             } while (!Confirmed);
-            HandleOptionsMenu(op);
 
+            HandleOptionsMenu(op, gambleMatch);
         }
 
         //Escrevendo as Opções
@@ -41,14 +68,18 @@ namespace Tarefa2.Viewers
             //Linhas por Op
             var linhaOp = new int[3] { 5, 7, 9 };
             //Menu
-            Console.SetCursorPosition(8, 1);
-            Console.Write($"{"Config",10}");
+             //Title
+            Console.SetCursorPosition(3, 2);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"{"Welcome To The GambleGame!!!",10}");
+            Console.ForegroundColor = ConsoleColor.White;
+             //OP
             Console.SetCursorPosition(colunaOP, linhaOp[0]);
             Console.Write("   Play");
             Console.SetCursorPosition(colunaOP, linhaOp[1]);
             Console.Write("   Edit");
             Console.SetCursorPosition(colunaOP, linhaOp[2]);
-            Console.Write("   Back");
+            Console.Write("   Exit");
             switch (op)
             {
                 case 0:
@@ -65,7 +96,9 @@ namespace Tarefa2.Viewers
                     break;
             }
             //Colocando o mouse fora do menu
-            Console.SetCursorPosition(0, 15);
+            Console.SetCursorPosition(0,15);
+            Console.WriteLine("Press Esc To Exit The Application");
+            Console.ForegroundColor = ConsoleColor.Black;
         }
 
         //Movendo a Seta
@@ -90,25 +123,30 @@ namespace Tarefa2.Viewers
             if (selection == ConsoleKey.Enter)
                 Confirmed = true;
 
+            //Verificando se o Enter foi Clicado
+            if (selection == ConsoleKey.Escape)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                System.Environment.Exit(0);
+            }
+
             return aux;
         }
 
         //Verificando oque cada Opção faz
-        private static void HandleOptionsMenu(int op)
+        private static void HandleOptionsMenu(int op,GambleMatch gambleMatch)
         {
             switch (op)
             {
                 case 0:
-                    PlayMenu.DrawScreen();
+                    PlayMenu.MenuScreen(gambleMatch);
                     break;
                 case 1:
-                    EditMenu.DrawScreen();
+                    EditMenu.MenuScreen(gambleMatch);
                     break;
                 case 2:
+                    Console.ForegroundColor = ConsoleColor.White;
                     System.Environment.Exit(0);
-                    break;
-                default:
-                    Menu.DrawScreen();
                     break;
             }
         }

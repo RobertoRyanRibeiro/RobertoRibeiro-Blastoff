@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Tarefa2.Entities
 {
-    public class AIGamble
+    public class GambleMatch
     {
         //Attributes
-        private Player player;
+        public Player player;
         private int defaultLimit = 5;
 
         //The limit of the array during the game
@@ -17,17 +17,9 @@ namespace Tarefa2.Entities
 
         //Maybe Tips
 
-        public AIGamble(Player ply)
+        public GambleMatch(Player ply)
         {
             MaxLimiter = defaultLimit;
-            Number = 0;
-            Win = false;
-            player = ply;
-        }
-
-        public AIGamble(int maxLimiter, Player ply)
-        {
-            MaxLimiter = maxLimiter;
             Number = 0;
             Win = false;
             player = ply;
@@ -40,8 +32,11 @@ namespace Tarefa2.Entities
 
         public void Start()
         {
+            player.RestartLive(3);
+            Win = false;
+
             var rand = new Random();
-            Number = (rand.Next(MaxLimiter));
+            Number = (rand.Next(MaxLimiter + 1));
         }
 
         public void Play(int value)
@@ -49,11 +44,15 @@ namespace Tarefa2.Entities
             if (value == Number)
                 Win = true;
             else
+            {
+                Console.WriteLine("You answer wrong,try again..");
                 player.LostLive(1);
+            }
         }
 
         public override string ToString()
         {
+            Console.Clear();
             var result = new StringBuilder();
 
             if (Win)
@@ -64,13 +63,8 @@ namespace Tarefa2.Entities
             else if (player.Life <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                result.AppendLine("-Que pena, você Perdeu...-");
+                result.AppendLine($"-Que pena, você Perdeu...O numero era {Number}-");
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
-            result.AppendLine("");
-            result.AppendLine("====================================");
-            result.AppendLine("Aperte Qualquer tecla para continuar");
 
             return result.ToString();
         }
