@@ -40,7 +40,7 @@ namespace Tarefa3
                     ErrorMessage(args);
                 }
 
-                VerificandoTriangulo(lados[0], lados[1], lados[2]);
+                VerificandoTriangulo(lados);
 
                 OpMessage();
 
