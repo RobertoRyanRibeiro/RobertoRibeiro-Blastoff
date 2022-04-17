@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Tarefa7.Entities;
 using System.Collections.Generic;
 
@@ -39,23 +40,46 @@ namespace Tarefa7
                 new SalarioDados(9,1000),
             };
 
-
-            foreach (var func in funcs)
+            try
             {
-                Console.WriteLine(func.ToString()); 
-                for(var cont = 0; cont < salarioDados.Length; cont++)
+                //Rodando List
+                foreach (var func in funcs)
                 {
-                    salarioDados[cont].Intervalo(func.Total());
+                    //Exibindo os Valores dos Funcionarios
+                    Console.WriteLine(func.ToString());
+                    for (var cont = 0; cont < salarioDados.Length; cont++)
+                    {
+                        salarioDados[cont].Intervalo(func.Total());
+                    }
+                }
+
+                Console.WriteLine("===============================================");
+
+                //Exibindo resultados
+                for (var cont = 0; cont < salarioDados.Length; cont++)
+                {
+                    Console.WriteLine(salarioDados[cont].ToString());
                 }
             }
-
-            Console.WriteLine("===============================================");
-
-            for (var cont = 0; cont < salarioDados.Length; cont++)
+            catch (FormatException ex)
             {
-                Console.WriteLine(salarioDados[cont].ToString());
+                Console.WriteLine(ex.InnerException);
+                Console.WriteLine(ex.Message);
+                ErrorMsg();
             }
-
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex.InnerException);
+                Console.WriteLine(ex.Message);
+                ErrorMsg();
+            }
         }
+        static void ErrorMsg()
+        {
+            Console.WriteLine("Digite Novamente...");
+            Thread.Sleep(1000);
+            Menu();
+        }
+
     }
 }
