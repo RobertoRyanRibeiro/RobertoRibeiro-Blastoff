@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading;
+using System.Globalization;
+
 
 namespace Tarefa3
 {
@@ -8,7 +10,7 @@ namespace Tarefa3
         static void Main(string[] args)
         {
             //Attributes
-            uint[] lados = new uint[3];
+            double[] lados = new double[3];
 
             do
             {
@@ -17,11 +19,11 @@ namespace Tarefa3
                 {
                     Console.Clear();
                     Console.WriteLine("<Bem Vindo>");
-                    for (int cont = 0; cont < 3; cont++)
+                    for (var cont = 0; cont < 3; cont++)
                     {
                         Console.WriteLine($"Digite o {cont + 1}º valor");
                         Console.WriteLine($"=========================");
-                        lados[cont] = uint.Parse(Console.ReadLine());
+                        lados[cont] = double.Parse(Console.ReadLine(),CultureInfo.CreateSpecificCulture("pt-BR"));
                         Console.Clear();
                     }
                 }
@@ -45,16 +47,16 @@ namespace Tarefa3
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
 
-        static void VerificandoTriangulo(params uint[] lados)
+        static void VerificandoTriangulo(params double[] lados)
         {
             //Auxiliar
-            uint aux;
+            double aux;
 
             Console.Clear();
             //Organizando do maior para o menor
-            for (int current = 0; current < lados.Length; current++)
+            for (var current = 0; current < lados.Length; current++)
             {
-                for (int prox = current + 1; prox <= lados.Length - 1; prox++)
+                for (var prox = current + 1; prox <= lados.Length - 1; prox++)
                 {
                     if (lados[prox] > lados[current])
                     {
@@ -69,7 +71,7 @@ namespace Tarefa3
             Console.WriteLine("Ordem de Maior para menor");
             Console.WriteLine("=========================");
             Console.Write("| ");
-            for (int cont = 0; cont < 3; cont++)
+            for (var cont = 0; cont < 3; cont++)
             {
                 Console.Write($"{lados[cont]} | ");
             }

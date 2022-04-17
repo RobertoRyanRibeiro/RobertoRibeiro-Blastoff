@@ -14,7 +14,6 @@ namespace Exerc1v0v9999
             Console.WriteLine("Digite um Valor entre 0 - 9999:");
             try
             {
-
                 value = ushort.Parse(Console.ReadLine());
                 num = new Numero(value);
                 Console.WriteLine(num.ToString());

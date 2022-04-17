@@ -1,0 +1,13 @@
+Desenvolva um programa que leia o comprimento de três retas e diga ao usuário se elas podem ou não formar um triângulo. Pode seguir as condições de existência abaixo:
+
+
+
+•| b -c | < a < b + c
+
+•| a -c | < b < a + c
+
+•| a -b | < c < a + b
+
+
+
+Sendo a, b, c os lados de um triângulo e a operação matemática entre | | é o módulo
