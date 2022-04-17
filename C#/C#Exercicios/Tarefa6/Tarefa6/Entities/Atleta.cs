@@ -52,6 +52,8 @@ namespace Tarefa6.Entities
         {
             Console.Clear();
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("==========================================================");
+            sb.AppendLine("");
 
             sb.AppendLine($"Atleta: {Nome}");
             sb.AppendLine("");
@@ -60,13 +62,15 @@ namespace Tarefa6.Entities
             sb.AppendLine($"Terceiro Salto: {Saltos[2].ToString("F1")} m");
             sb.AppendLine($"Quarto Salto: {Saltos[3].ToString("F1")} m");
             sb.AppendLine($"Quinto Salto: {Saltos[4].ToString("F1")} m");
-
+            sb.AppendLine("==========================================================");
             sb.AppendLine("");
+
             sb.AppendLine($"Melhor Salto: {MelhorSalto.ToString("F1")} m");
             sb.AppendLine($"Pior Salto: {PiorSalto.ToString("F1")} m");
             sb.AppendLine($"Média dos demais saltos: {MediaSaltos.ToString("F1")} m");
-
+            sb.AppendLine("==========================================================");
             sb.AppendLine("");
+
             sb.AppendLine("Resultado Final");
             sb.AppendLine($"{Nome}: {MediaSaltos.ToString("F1")} m");
 
