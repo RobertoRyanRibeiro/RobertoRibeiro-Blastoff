@@ -6,16 +6,14 @@ namespace Tarefa4.Entities
 {
     public class NotaFiscal
     {
-        public double Taxa { get; set; }
-        public double Multa { get; set; }
-        public double KgExcesso {get; set; }
-        public double Kg {get; set; }
+        public double Taxa { get;private set; }
+        public double Multa { get; private set; }
+        public double KgExcesso {get; private set; }
+        public double Kg {get; private set; }
 
         public NotaFiscal(double taxa,double kg)
         {
             Taxa = taxa;
-            Multa = 0;
-            KgExcesso = 0;
             Kg = kg;
         }
 

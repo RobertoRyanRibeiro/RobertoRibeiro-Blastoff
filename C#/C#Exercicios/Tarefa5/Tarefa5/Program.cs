@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
-using Tarefa4.Entities;
+using Tarefa5.Entities;
 
-namespace Tarefa4
+namespace Tarefa5
 {
     internal class Program
     {
@@ -13,20 +13,19 @@ namespace Tarefa4
 
         static void Menu()
         {
-            Console.Clear();
             try
             {
-                Console.WriteLine("Digite a Taxa:");
-                Console.WriteLine("====================");
-                var taxa = double.Parse(Console.ReadLine());
-                Console.WriteLine("Digite o Kg do peixe");
-                Console.WriteLine("====================");
-                var kg = double.Parse(Console.ReadLine());
-                var notaFiscal = new NotaFiscal(taxa, kg);
-                notaFiscal.CalcularExcesso();
-
                 Console.Clear();
-                Console.WriteLine(notaFiscal.ToString());
+                Console.WriteLine("Digite a quantidade de horas");
+                Console.WriteLine("===========================");
+                var hrTrab = double.Parse(Console.ReadLine());
+                Console.WriteLine("Digite o valor da Hora");
+                Console.WriteLine("======================");
+                var valHr = double.Parse(Console.ReadLine());
+
+                FolhaPagamento folPag = new FolhaPagamento(hrTrab, valHr);
+                folPag.CalcularSalLiquido();
+                Console.WriteLine(folPag.ToString());
             }
             catch (FormatException ex)
             {
@@ -40,14 +39,13 @@ namespace Tarefa4
                 Console.WriteLine(ex.Message);
                 ErrorMsg();
             }
-
         }
-
         static void ErrorMsg()
         {
             Console.WriteLine("Digite Novamente...");
             Thread.Sleep(1000);
             Menu();
         }
+
     }
 }
