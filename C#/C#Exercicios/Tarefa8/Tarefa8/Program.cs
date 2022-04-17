@@ -31,14 +31,17 @@ namespace Tarefa8
                 }
                 else
                 {
-                    Console.Clear();
-                    ErrorMsg();
+                    throw new Exception("");
                 }
             }
             catch (OverflowException ex)
             {
-                Console.WriteLine(ex.InnerException);
-                Console.WriteLine(ex.Message);
+                Console.Clear();
+                ErrorMsg();
+            }
+            catch (Exception ex)
+            {
+                Console.Clear();
                 ErrorMsg();
             }
 
@@ -53,7 +56,13 @@ namespace Tarefa8
             if (aux.Contains("-"))
             {
                 aux = Regex.Replace(tel, @"\-", "");
+                if (aux.Length > 8)
+                    throw new Exception("Numero maximo de digitos é 8");
             }
+
+            if (aux.Length > 8)
+                throw new Exception("Numero maximo de digitos é 8");
+
             //Verificando se o numero tem menos de 7 digitos
             if (aux.Length == 7)
             {
@@ -81,8 +90,16 @@ namespace Tarefa8
 
         static void ErrorMsg()
         {
-            Console.WriteLine("Error: Formatação de Numero errado");
-            Thread.Sleep(1000);
+            Console.WriteLine("");
+            Console.ForegroundColor= ConsoleColor.Red;
+            Console.WriteLine("-Error: Formatação Errada-");
+            Console.ForegroundColor= ConsoleColor.White;
+            Console.WriteLine("|O Numero precisa ser numerico.");
+            Console.WriteLine("|Nos formatos XXXX-XXXX | XXXXXXXX.");
+            Console.WriteLine("|No minimo 7 digitos.");
+            Console.WriteLine("=======================================");
+            Console.WriteLine("Aperte qualquer tecla para continuar...");
+            Console.ReadKey();
             Menu();
         }
     }
