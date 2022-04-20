@@ -19,6 +19,9 @@ namespace Tarefa4.Entities
 
         public void CalcularExcesso()
         {
+            if (Kg < 0 || Taxa < 0)
+                throw new ArgumentException("Um dos dados é negativo");
+
             if (Kg > 50)
             {
                 KgExcesso = Kg - 50;

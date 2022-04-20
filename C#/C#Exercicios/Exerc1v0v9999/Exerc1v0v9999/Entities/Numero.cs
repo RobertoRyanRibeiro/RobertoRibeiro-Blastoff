@@ -18,7 +18,7 @@ namespace Exerc1v0v9999.Entities
         {
             Value = value;
             EparImpar = Enum.ParImpar.Padrao;
-            Unidade = 0;
+            Unidade = 0     ;
             Dezena = null;
             Centena = null;
             Milhar = null;

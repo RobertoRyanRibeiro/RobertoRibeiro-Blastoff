@@ -18,7 +18,7 @@ namespace Tarefa5.Entities
         public double Sindicato { get; private set; }
         public double FGTS { get; private set; }
 
-        public FolhaPagamento(double hrTrab,double valorHr)
+        public FolhaPagamento(double hrTrab, double valorHr)
         {
             HrTrab = hrTrab;
             ValorHr = valorHr;
@@ -28,15 +28,18 @@ namespace Tarefa5.Entities
         public void CalcularSalLiquido()
         {
 
-            //IR
-            if (SalBruto <= 900)
-                IR = 0;
-            else if (SalBruto <= 1500)
-                IR = SalBruto * 0.05;
-            else if (SalBruto <= 2500)
-                IR = SalBruto * 0.1;
-            else if (SalBruto  > 2500)
-                IR = SalBruto * 0.2;
+            if (HrTrab < 0 || ValorHr < 0)
+                throw new ArgumentException("Valor Negativo...");
+
+                //IR
+                if (SalBruto <= 900)
+                    IR = 0;
+                else if (SalBruto <= 1500)
+                    IR = SalBruto * 0.05;
+                else if (SalBruto <= 2500)
+                    IR = SalBruto * 0.1;
+                else if (SalBruto > 2500)
+                    IR = SalBruto * 0.2;
 
             //INSS
             INSS = SalBruto * 0.1;

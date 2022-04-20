@@ -7,10 +7,10 @@ namespace Tarefa2.Entities
     public class GambleMatch
     {
         //Attributes
-        public Player player;
         private int defaultLimit = 5;
 
         //The limit of the array during the game
+        public Player Player { get; private set; }
         public int MaxLimiter { get; private set; }
         public int Number { get; private set; }
         public bool Win { get; private set; }
@@ -22,7 +22,7 @@ namespace Tarefa2.Entities
             MaxLimiter = defaultLimit;
             Number = 0;
             Win = false;
-            player = ply;
+            Player = ply;
         }
 
         public void Edit(int maxLimiter)
@@ -32,7 +32,7 @@ namespace Tarefa2.Entities
 
         public void Start()
         {
-            player.RestartLive(3);
+            Player.RestartLive(3);
             Win = false;
 
             var rand = new Random();
@@ -46,7 +46,7 @@ namespace Tarefa2.Entities
             else
             {
                 Console.WriteLine("You answer wrong,try again..");
-                player.LostLive(1);
+                Player.LostLive(1);
             }
         }
 
@@ -60,7 +60,7 @@ namespace Tarefa2.Entities
                 Console.ForegroundColor = ConsoleColor.Green;
                 result.AppendLine("+Parabéns você Ganhou!!!+");
             }
-            else if (player.Life <= 0)
+            else if (Player.Life <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 result.AppendLine($"-Que pena, você Perdeu...O numero era {Number}-");
