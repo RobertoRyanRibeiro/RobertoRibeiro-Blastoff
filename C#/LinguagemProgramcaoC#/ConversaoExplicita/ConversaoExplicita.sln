@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversaoExplicita", "ConversaoExplicita\ConversaoExplicita.csproj", "{D16C0C0E-227C-4C97-9C4C-FE42038418BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D16C0C0E-227C-4C97-9C4C-FE42038418BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D16C0C0E-227C-4C97-9C4C-FE42038418BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D16C0C0E-227C-4C97-9C4C-FE42038418BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D16C0C0E-227C-4C97-9C4C-FE42038418BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E050938-217D-4FB1-908B-302BFE142FCF}
+	EndGlobalSection
+EndGlobal
