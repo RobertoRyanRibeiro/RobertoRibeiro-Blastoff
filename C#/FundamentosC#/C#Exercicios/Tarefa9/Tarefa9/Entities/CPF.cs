@@ -132,7 +132,7 @@ namespace Tarefa9.Entities
 
             for (var c = 0; c <= digitos.Length - 3; c++)
             {
-                   somaBase += multpNum * digitos[c];
+                somaBase += multpNum * digitos[c];
                 multpNum++;
             }
 

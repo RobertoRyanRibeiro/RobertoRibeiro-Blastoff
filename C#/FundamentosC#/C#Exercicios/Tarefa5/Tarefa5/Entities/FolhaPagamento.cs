@@ -56,13 +56,13 @@ namespace Tarefa5.Entities
             INSS = SalBruto * 0.1;
 
             //Sindicato
-            //Sindicato = SalBruto * 0.03;
+            Sindicato = SalBruto * 0.03;
 
             //FGTS
             FGTS = SalBruto * 0.11;
 
             //Total Desc
-            TotalDesc = IR + INSS + Sindicato;
+            TotalDesc = IR + INSS ;
 
             //SalLiquido
             SalLiquido = SalBruto - TotalDesc;
@@ -79,7 +79,7 @@ namespace Tarefa5.Entities
             sb.AppendLine($"|Salario Bruto: {SalBruto.ToString("C", ptBr)}");
             sb.AppendLine($"|IR: {IR.ToString("C", ptBr)}");
             sb.AppendLine($"|INSS: {INSS.ToString("C", ptBr)}");
-            //sb.AppendLine($"|Sindicato: {Sindicato.ToString("C",ptBr)}");
+            sb.AppendLine($"|Sindicato: {Sindicato.ToString("C",ptBr)}");
             sb.AppendLine($"|FGTS: {FGTS.ToString("C", ptBr)}");
             sb.AppendLine($"|Total de Desconto: {TotalDesc.ToString("C", ptBr)}");
             sb.AppendLine($"|Salario Liquido: {SalLiquido.ToString("C", ptBr)}");
