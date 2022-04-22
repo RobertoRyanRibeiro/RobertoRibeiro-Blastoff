@@ -13,15 +13,28 @@ namespace Tarefa4.Entities
 
         public NotaFiscal(double taxa,double kg)
         {
+            //Zero
+            if (taxa == 0 && kg == 0)
+                throw new ArgumentException("Os Dados não podem ser igual a zero");
+            if (taxa == 0)
+                throw new ArgumentException("Taxa não pode ser igual a zero");
+            if (kg == 0)
+                throw new ArgumentException("Kg não pode ser igual a zero");
+            //Negativo
+            if (taxa < 0 && kg < 0)
+                throw new ArgumentException("Os Dados não podem ser negativo");
+            if (taxa < 0)
+                throw new ArgumentException("Taxa não pode ser negativa");
+            if (kg < 0)
+                throw new ArgumentException("Kg não pode ser negativo");
+
+
             Taxa = taxa;
             Kg = kg;
         }
 
         public void CalcularExcesso()
         {
-            if (Kg < 0 || Taxa < 0)
-                throw new ArgumentException("Um dos dados é negativo");
-
             if (Kg > 50)
             {
                 KgExcesso = Kg - 50;

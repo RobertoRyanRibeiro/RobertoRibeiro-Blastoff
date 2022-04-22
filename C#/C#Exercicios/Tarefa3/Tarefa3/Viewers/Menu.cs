@@ -12,26 +12,12 @@ namespace Tarefa3.Viewers
 
         public static void View()
         {
-            //Attributes
-            double[] lados = new double[3];
 
             do
             {
-                Console.Clear();
-                Console.WriteLine("<Bem Vindo>");
-                //Input
                 try
                 {
-                    for (var cont = 0; cont < 3; cont++)
-                    {
-                        Console.WriteLine($"Digite o {cont + 1}º valor");
-                        Console.WriteLine($"=========================");
-                        lados[cont] = double.Parse(Console.ReadLine(), CultureInfo.CreateSpecificCulture("pt-BR"));
-                        if (lados[cont] < 0)
-                            throw new ArgumentException("Valor Negativo...");
-                        Console.Clear();
-                    }
-                    Verificar(lados);
+                    Verificar(InputDados());
                 }
                 catch (FormatException ex)
                 {
@@ -44,7 +30,7 @@ namespace Tarefa3.Viewers
                     Console.WriteLine(ex.InnerException);
                     Console.WriteLine(ex.Message);
                     ErrorMessage();
-                }    
+                }
                 catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.InnerException);
@@ -54,6 +40,28 @@ namespace Tarefa3.Viewers
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
 
+
+        public static double[] InputDados()
+        {
+            var lados = new double[3];
+
+            Console.Clear();
+            Console.WriteLine("<Bem Vindo>");
+            //Input
+
+            for (var cont = 0; cont < 3; cont++)
+            {
+                Console.WriteLine($"Digite o {cont + 1}º valor");
+                Console.WriteLine($"=========================");
+                lados[cont] = double.Parse(Console.ReadLine(), CultureInfo.CreateSpecificCulture("pt-BR"));
+
+                if (lados[cont] < 0)
+                    throw new ArgumentException("Valor Negativo...");
+
+                Console.Clear();
+            }
+            return lados;
+        }
 
         public static void Verificar(params double[] lados)
         {

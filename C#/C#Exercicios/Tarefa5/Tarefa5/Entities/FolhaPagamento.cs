@@ -20,6 +20,21 @@ namespace Tarefa5.Entities
 
         public FolhaPagamento(double hrTrab, double valorHr)
         {
+            //Negativo
+            if (hrTrab < 0 && valorHr < 0)
+                throw new ArgumentException("Os Valores não podem ser Negativo...");
+            if (hrTrab < 0)
+                throw new ArgumentException("A hora de trabalho não pode ser Negativa...");
+            if (valorHr < 0)
+                throw new ArgumentException("O valor por hora não pode ser Negativa...");
+            //Zero
+            if (hrTrab == 0 && valorHr == 0)
+                throw new ArgumentException("Os Valores não podem ser zero...");
+            if (hrTrab == 0)
+                throw new ArgumentException("A hora de trabalho não pode ser zero...");
+            if (valorHr == 0)
+                throw new ArgumentException("O valor por hora não pode ser zero...");
+
             HrTrab = hrTrab;
             ValorHr = valorHr;
             SalBruto = ValorHr * HrTrab;
@@ -27,10 +42,6 @@ namespace Tarefa5.Entities
 
         public void CalcularSalLiquido()
         {
-
-            if (HrTrab < 0 || ValorHr < 0)
-                throw new ArgumentException("Valor Negativo...");
-
                 //IR
                 if (SalBruto <= 900)
                     IR = 0;

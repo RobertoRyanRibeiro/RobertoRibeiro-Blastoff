@@ -42,9 +42,17 @@ namespace Tarefa6.Viewers
         }
 
 
+        static void AvaliandoSaltos(string nome, params double[] salto)
+        {
+            var atleta = new Atleta(nome, salto);
+            atleta.Avaliar();
+
+            Console.WriteLine(atleta.ToString());
+        }
+
         static bool NomeValido(string nome)
         {
-            string pattern = @"^[A-Za-záàâãéèêíïóôõöúçñ][A-Za-záàâãéèêíïóôõöúçñ\s]*$";
+            string pattern = @"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]*$";
 
             Match match = Regex.Match(nome, pattern);
 
@@ -52,14 +60,6 @@ namespace Tarefa6.Viewers
                 return true;
             else
                 return false;
-        }
-
-        static void AvaliandoSaltos(string nome, params double[] salto)
-        {
-            var atleta = new Atleta(nome, salto);
-            atleta.Avaliar();
-
-            Console.WriteLine(atleta.ToString());
         }
 
         static void Process()
@@ -80,6 +80,10 @@ namespace Tarefa6.Viewers
                     salto[cont] = double.Parse(Console.ReadLine());
                     if (salto[cont] < 0)
                         throw new ArgumentException("Error: Valor Negativo");
+                    if (salto[cont] == 0)
+                        throw new ArgumentException("Error: O Atleta precisa saltar");
+                    if (salto[cont] > 100)
+                        throw new ArgumentException("Error: O Salto precisa ser possivel");
                 }
                 AvaliandoSaltos(nome, salto);
             }

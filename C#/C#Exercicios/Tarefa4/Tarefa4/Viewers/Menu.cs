@@ -15,19 +15,7 @@ namespace Tarefa4.Viewers
                 Console.Clear();
                 try
                 {
-                    Console.WriteLine("Digite a Taxa:");
-                    Console.WriteLine("====================");
-                    var taxa = double.Parse(Console.ReadLine());
-                    Console.WriteLine("Digite o Kg do peixe");
-                    Console.WriteLine("====================");
-                    var kg = double.Parse(Console.ReadLine());
-                    var notaFiscal = new NotaFiscal(taxa, kg);
-                    
-                    notaFiscal.CalcularExcesso();
-
-                    Console.Clear();
-                    Console.WriteLine(notaFiscal.ToString());
-
+                    Dados();
                     OpMessage();
                 }
                 catch (FormatException ex)
@@ -49,6 +37,24 @@ namespace Tarefa4.Viewers
                     ErrorMsg();
                 }
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
+        }
+
+
+        static void Dados()
+        {
+            Console.WriteLine("Digite a Taxa:");
+            Console.WriteLine("====================");
+            var taxa = double.Parse(Console.ReadLine());
+            Console.WriteLine("Digite o Kg do peixe");
+            Console.WriteLine("====================");
+            var kg = double.Parse(Console.ReadLine());
+            
+            var notaFiscal = new NotaFiscal(taxa, kg);
+
+            notaFiscal.CalcularExcesso();
+
+            Console.Clear();
+            Console.WriteLine(notaFiscal.ToString());
         }
 
         static void ErrorMsg()

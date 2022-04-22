@@ -7,7 +7,7 @@ namespace Tarefa9.Entities
 {
     public class CPF
     {
-        static Regex pattern = new Regex(@"\d{3}[\.]?\d{3}[\.]?\d{3}\-\d{2}");
+        static Regex pattern = new Regex(@"^\d{3}[\.]?\d{3}[\.]?\d{3}\-\d{2}$");
 
         static bool cpfValido = false;
         static string result ;

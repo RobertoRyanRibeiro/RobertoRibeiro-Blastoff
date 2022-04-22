@@ -7,8 +7,10 @@ namespace Tarefa3.Entities
     public class Triangulo
     {
 
-        public string Result { get; private set; }
+        public StringBuilder Result { get; private set; }
         public double[] Lados { get; private set; }
+
+
 
         public Triangulo(params double[] lados)
         {
@@ -17,6 +19,8 @@ namespace Tarefa3.Entities
             Lados[1] = lados[1];
             Lados[2] = lados[2];
         }
+
+
 
         public void OrganizandoLados()
         {
@@ -52,23 +56,39 @@ namespace Tarefa3.Entities
 
         public void Analisar()
         {
+            Result = new StringBuilder();
             //Verificando se é um triangulo
             Console.WriteLine(" ");
             if (Lados[0] < Lados[1] + Lados[2])
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Result = "+As retas formam um triangulo+";
+                Result.AppendLine("+As retas formam um triangulo+");
+                QualTriangulo();
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Result = "-As retas não formam um triangulo-";
+                Result.AppendLine("-As retas não formam um triangulo-");
             }
         }
 
+        void QualTriangulo()
+        {
+            if (Lados[0] == Lados[1] && Lados[1] == Lados[2])
+                Result.AppendLine("Triangulo Equilatero");
+            else if ((Lados[0] == Lados[1] && Lados[1] != Lados[2])
+            || (Lados[1] == Lados[2] && Lados[0] != Lados[1]))
+                Result.AppendLine("Triangulo Isósceles");
+            if (Lados[0] != Lados[1] && Lados[1] != Lados[2] && Lados[0] != Lados[2])
+                Result.AppendLine("Triangulo Escaleno");
+
+        }
+
+
+
         public override string ToString()
         {
-            return Result;
+            return Result.ToString();
         }
     }
 }

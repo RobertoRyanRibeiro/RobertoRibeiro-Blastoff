@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Tarefa7.Entities
 {
@@ -10,8 +11,20 @@ namespace Tarefa7.Entities
         public double VendaBrutal { get; private set; }
         public double SalarioFixo { get; private set; }
 
+
+
         public Funcionario(string nome ,double vdBrutal)
         {
+            Regex regex = new Regex(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]*$");
+            Match match = regex.Match(nome);
+
+            if (!match.Success)
+                throw new ArgumentException("Formatação de Nome Invalido");
+
+            if (vdBrutal < 0)
+                throw new ArgumentException("Valor Negativo");
+
+
             Nome = nome;
             VendaBrutal = vdBrutal;
             SalarioFixo = 200;
@@ -19,10 +32,15 @@ namespace Tarefa7.Entities
         
         public Funcionario(string nome ,double vdBrutal,double salFixo) 
         {
+            if (vdBrutal < 0 || salFixo < 0)
+                throw new ArgumentException("Valor Negativo");
+
             Nome = nome;
             VendaBrutal = vdBrutal;
             SalarioFixo = salFixo;
         }
+
+
 
         public double Total()
         {

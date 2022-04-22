@@ -7,38 +7,27 @@ namespace Tarefa8.Viewers
 {
     public static class Menu
     {
-        static Regex pattern = new Regex(@"\d{4}\-?\d{3,4}");
+        static Regex pattern = new Regex(@"^\d{4}\-?\d{3,4}$");
 
         public static void View()
         {
             do
             {
-
-                Console.Clear();
-                Console.WriteLine("Digite um numero de telefone : XXXX-XXXX");
-                Console.WriteLine("========================================");
-                var tel = Console.ReadLine();
-                Match match = pattern.Match(tel);
-
+                var match = InputDados();
                 try
                 {
                     if (match.Success)
                     {
-                        Telefone telefone = new Telefone(match.Value);
-                        
-                        telefone.AnalisarNum();
-                        Console.WriteLine(telefone.ToString());
-                        
+                        Process(match);
                         OpMessage();
                     }
                     else
                     {
-                        throw new ArgumentException("Error: Formatação Invalida");
+                        throw new ArgumentException();
                     }
                 }
                 catch (FormatException ex)
                 {
-                    Console.WriteLine(ex.Message);
                     Console.Clear();
                     ErrorMsg();
                 }
@@ -49,13 +38,31 @@ namespace Tarefa8.Viewers
                 }
                 catch (ArgumentException ex)
                 {
-                    Console.WriteLine(ex.Message);
                     Console.Clear();
                     ErrorMsg();
                 }
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
 
+        static Match InputDados()
+        {
+            Console.Clear();
+            Console.WriteLine("Digite um numero de telefone : XXXX-XXXX");
+            Console.WriteLine("========================================");
+            var tel = Console.ReadLine();
+            var match = pattern.Match(tel);
+
+            return match;
+        }
+
+        static void Process(Match match)
+        {
+            var telefone = new Telefone(match.Value);
+
+            telefone.AnalisarNum();
+            
+            Console.WriteLine(telefone.ToString());
+        }
         static void ErrorMsg()
         {
             Console.WriteLine("");

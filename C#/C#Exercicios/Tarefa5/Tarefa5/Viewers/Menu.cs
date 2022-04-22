@@ -14,19 +14,7 @@ namespace Tarefa5.Viewers
             {
                 try
                 {
-                    Console.Clear();
-                    Console.WriteLine("Digite a quantidade de horas");
-                    Console.WriteLine("===========================");
-                    var hrTrab = double.Parse(Console.ReadLine());
-                    Console.WriteLine("Digite o valor da Hora");
-                    Console.WriteLine("======================");
-                    var valHr = double.Parse(Console.ReadLine());
-
-                    FolhaPagamento folPag = new FolhaPagamento(hrTrab, valHr);
-                    folPag.CalcularSalLiquido();
-
-                    Console.WriteLine(folPag.ToString());
-
+                    Dados();
                     OpMessage();
                 }
                 catch (FormatException ex)
@@ -49,6 +37,22 @@ namespace Tarefa5.Viewers
                 }
 
             }while(Console.ReadKey().Key != ConsoleKey.Escape);  
+        }
+
+        static void Dados()
+        {
+            Console.Clear();
+            Console.WriteLine("Digite a quantidade de horas");
+            Console.WriteLine("===========================");
+            var hrTrab = double.Parse(Console.ReadLine());
+            Console.WriteLine("Digite o valor da Hora");
+            Console.WriteLine("======================");
+            var valHr = double.Parse(Console.ReadLine());
+
+            FolhaPagamento folPag = new FolhaPagamento(hrTrab, valHr);
+            folPag.CalcularSalLiquido();
+
+            Console.WriteLine(folPag.ToString());
         }
         static void ErrorMsg()
         {
