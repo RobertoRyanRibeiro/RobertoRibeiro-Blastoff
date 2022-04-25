@@ -5,15 +5,11 @@ using BaltaMaoMassa.ContentContext.Enums;
 
 namespace BaltaMaoMassa.ContentContext
 {
-    public class Course : Content
+    public class Lecture
     {
-        public string Tag { get; set; }
-        public IList<Module> Modules { get; set; }
+        public int Order { get; set; }
+        public string Title { get; set; }
+        public int DurationInMinutes { get; set; }
         public EContentLevel Level { get; set; }
-
-        public Course()
-        {
-            Modules = new List<Module>();
-        }
     }
 }

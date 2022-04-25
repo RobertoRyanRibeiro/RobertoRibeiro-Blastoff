@@ -9,6 +9,16 @@ namespace BaltaMaoMassa
         {
 
             var course = new Course();
+            course.Level = ContentContext.Enums.EContentLevel.Beginner;
+            
+            foreach(var item in course.Modules)
+            {
+
+            }
+
+            var carrer = new Carrer();
+            carrer.Items.Add(new CarrerItem());
+            Console.WriteLine(carrer.TotalCourses);
         }
     }
 }

@@ -4,16 +4,15 @@ using System.Text;
 
 namespace BaltaMaoMassa.ContentContext
 {
-    public abstract class Content
+    public class Module
     {
-        public Guid Id { get; set; }
+        public int Order { get; set; }
         public string Title { get; set; }
-        public string Url { get; set; }
+        public IList<Lecture> Lectures { get; set; }
 
-        public Content()
+        public Module()
         {
-            Id = Guid.NewGuid();
+            Lectures = new List<Lecture>();
         }
-
     }
 }
