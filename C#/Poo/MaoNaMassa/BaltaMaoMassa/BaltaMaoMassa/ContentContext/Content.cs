@@ -4,16 +4,15 @@ using System.Text;
 
 namespace BaltaMaoMassa.ContentContext
 {
-    public abstract class Content
+    public abstract class Content : Base
     {
-        public Guid Id { get; set; }
+        public Content(string title,string url)
+        {
+            Title = title;
+            Url = url;
+        }
+  
         public string Title { get; set; }
         public string Url { get; set; }
-
-        public Content()
-        {
-            Id = Guid.NewGuid();
-        }
-
     }
 }
