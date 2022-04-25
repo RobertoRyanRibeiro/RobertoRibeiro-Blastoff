@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParadigmaOrientadoObjeto", "ParadigmaOrientadoObjeto\ParadigmaOrientadoObjeto.csproj", "{4FDF2784-E04E-464C-B015-7BCBDFB36495}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassesAbstratas", "ClassesAbstratas\ClassesAbstratas.csproj", "{55AA392A-24FB-4A9C-80A6-8545CDDAE9D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4FDF2784-E04E-464C-B015-7BCBDFB36495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FDF2784-E04E-464C-B015-7BCBDFB36495}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FDF2784-E04E-464C-B015-7BCBDFB36495}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FDF2784-E04E-464C-B015-7BCBDFB36495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55AA392A-24FB-4A9C-80A6-8545CDDAE9D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55AA392A-24FB-4A9C-80A6-8545CDDAE9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55AA392A-24FB-4A9C-80A6-8545CDDAE9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55AA392A-24FB-4A9C-80A6-8545CDDAE9D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FE6B1E77-C81C-424F-9483-E172A3634B2A}
+		SolutionGuid = {0E6FCFDB-63F6-406F-981D-288AD0764E2F}
 	EndGlobalSection
 EndGlobal
