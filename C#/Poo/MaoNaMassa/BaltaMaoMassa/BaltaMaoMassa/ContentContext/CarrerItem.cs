@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using BaltaMaoMassa.NotificationContext;
+using BaltaMaoMassa.SharedContext;
 
 namespace BaltaMaoMassa.ContentContext
 {

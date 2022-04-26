@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using BaltaMaoMassa.ContentContext.Enums;
+using BaltaMaoMassa.SharedContext;
+
 
 namespace BaltaMaoMassa.ContentContext
 {

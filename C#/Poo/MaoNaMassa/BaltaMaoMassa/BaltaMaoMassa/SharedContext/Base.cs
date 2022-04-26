@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using BaltaMaoMassa.NotificationContext;
 
-namespace BaltaMaoMassa.ContentContext
+namespace BaltaMaoMassa.SharedContext
 {
     public abstract class Base : Notifiable
     {
