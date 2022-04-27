@@ -5,13 +5,13 @@ using Questao2.Models.Entities.Enums;
 
 namespace Questao2.Models.Entities
 {
-    public class BombaCOmbustivel
+    public class BombaCombustivel
     {
         public TipoCombustivel Tipo { get; private set; }
         public double Valor { get; private set; }
         public double QuantidadeCombustivel { get; private set; }
 
-        public BombaCOmbustivel()
+        public BombaCombustivel()
         {
 
         }
