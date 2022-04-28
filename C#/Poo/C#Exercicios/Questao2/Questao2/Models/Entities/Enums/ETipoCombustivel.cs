@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Questao2.Models.Entities.Enums
 {
-    public enum TipoCombustivel
+    public enum ETipoCombustivel
     {
         Diesel =1,
         Gasolina = 2,

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Questao2.Models.Services;
-using Questao2.Models.Entities;
+using Questao2.Viewers.SharedMenu;
+
 
 namespace Questao2.Viewers
 {
@@ -22,10 +23,11 @@ namespace Questao2.Viewers
             Console.CursorVisible = true;
             Console.Clear();
 
-
+            Console.WriteLine(bomba.ToString());
             Console.WriteLine("+====================+");
             Console.WriteLine("|   1 - Por Valor   |");
             Console.WriteLine("|   2 - Por Litro   |");
+            Console.WriteLine("|   3 - Voltar      |");
             Console.WriteLine("+====================+");
             Console.Write("OP: ");
         }
@@ -35,10 +37,13 @@ namespace Questao2.Viewers
             switch (op)
             {
                 case 1:
-                    service.PorValor();
+                    service.PorValor(bomba);
                     break;
                 case 2:
-                    service.PorLitro();
+                    service.PorLitro(bomba);
+                    break;
+                case 3:
+                    
                     break;
                 default:
                     throw new ArgumentException();

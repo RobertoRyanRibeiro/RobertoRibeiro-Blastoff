@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Questao2.Models.Entities;
+using Questao2.Models.Entities.Enums;
 
-namespace Questao2.Viewers
+
+namespace Questao2.Viewers.SharedMenu
 {
     public abstract class MenuModel
     {
+        public static BombaCombustivel bomba = new BombaCombustivel(7.5,ETipoCombustivel.Diesel,500);
+
         public virtual void View()
         {
             do
@@ -29,7 +34,6 @@ namespace Questao2.Viewers
                 }
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
-
         protected virtual void DrawMenu()
         {
             Console.CursorVisible = true;
@@ -40,7 +44,6 @@ namespace Questao2.Viewers
             Console.WriteLine("+====================+");
             Console.Write("OP: ");
         }
-
         protected virtual void SelectOp(int op)
         {
             switch (op)
@@ -48,10 +51,12 @@ namespace Questao2.Viewers
                 case 1:
                     BombaMenu bombaMenu = new BombaMenu();
                     bombaMenu.View();
+                    View();
                     break;
                 case 2:
                     AbastecerMenu abastecerMenu = new AbastecerMenu();
                     abastecerMenu.View();
+                    View();
                     break;
                 default:
                     throw new ArgumentException();
