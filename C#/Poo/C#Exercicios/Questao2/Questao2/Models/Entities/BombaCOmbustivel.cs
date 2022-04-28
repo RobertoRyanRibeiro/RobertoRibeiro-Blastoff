@@ -15,12 +15,14 @@ namespace Questao2.Models.Entities
         {
 
         }
-        public void  AbastecerPorValor()
+        public double AbastecerPorValor(double valor)
         {
+            var litros = 0;
 
+            return litros;
         }
 
-        public void  AbastecerPorLitro()
+        public void  AbastecerPorLitro(double litros)
         {
 
         }
@@ -34,9 +36,9 @@ namespace Questao2.Models.Entities
         {
 
         }
-        public void AlterarQuantidadeCombustivel()
+        public void AlterarQuantidadeCombustivel(double litros)
         {
-
+            QuantidadeCombustivel -= litros;
         }
 
     }

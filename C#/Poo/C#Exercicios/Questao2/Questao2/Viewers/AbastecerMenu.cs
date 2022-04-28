@@ -1,15 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Questao2.Models.Services;
+using Questao2.Models.Entities;
 
 namespace Questao2.Viewers
 {
     public class AbastecerMenu : MenuModel
     {
+        AbastecerService service = new AbastecerService();
+
+        public override void View()
+        {
+            DrawMenu();
+            var op = int.Parse(Console.ReadLine());
+            SelectOp(op);
+        }
+
         protected override void DrawMenu()
         {
             Console.CursorVisible = true;
             Console.Clear();
+
+
             Console.WriteLine("+====================+");
             Console.WriteLine("|   1 - Por Valor   |");
             Console.WriteLine("|   2 - Por Litro   |");
@@ -22,12 +35,10 @@ namespace Questao2.Viewers
             switch (op)
             {
                 case 1:
-                    BombaMenu bombaMenu = new BombaMenu();
-                    bombaMenu.View();
+                    service.PorValor();
                     break;
                 case 2:
-                    AbastecerMenu abastecerMenu = new AbastecerMenu();
-                    abastecerMenu.View();
+                    service.PorLitro();
                     break;
                 default:
                     throw new ArgumentException();

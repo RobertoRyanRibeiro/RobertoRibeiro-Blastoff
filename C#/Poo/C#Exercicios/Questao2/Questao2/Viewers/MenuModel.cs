@@ -6,7 +6,7 @@ namespace Questao2.Viewers
 {
     public abstract class MenuModel
     {
-        public void View()
+        public virtual void View()
         {
             do
             {
@@ -55,7 +55,6 @@ namespace Questao2.Viewers
                     break;
                 default:
                     throw new ArgumentException();
-                    break;
             }
         }
 
