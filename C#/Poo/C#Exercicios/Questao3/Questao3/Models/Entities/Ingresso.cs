@@ -8,15 +8,15 @@ namespace Questao3.Models.Entities
 {
     public abstract class Ingresso
     {
-        protected Ingresso()
+       
+        public Ingresso(double valor)
         {
-            Valor = 5;
+            Valor = valor;
         }
-
 
         public double Valor { get; protected set; }
 
-        public ETipoIngresso Tipo { get; protected set; } = ETipoIngresso.Normal;
+        public ETipoIngresso Tipo { get; protected set; } = ETipoIngresso.Default;
 
         public virtual string ImprimirIngresso()
         {

@@ -6,7 +6,7 @@ namespace Questao3.Models.Entities
 {
     public class CamaroteInferior : Camarote
     {
-        public CamaroteInferior(string nome, uint quantidadeFilas, uint quantidadeAssentoPorFilas) : base(nome, quantidadeFilas, quantidadeAssentoPorFilas)
+        public CamaroteInferior(string nome, int quantidadeFilas, int quantidadeAssentoPorFilas) : base(nome, quantidadeFilas, quantidadeAssentoPorFilas)
         {
         }
     }

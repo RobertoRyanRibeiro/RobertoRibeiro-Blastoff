@@ -7,7 +7,7 @@ namespace Questao3.Models.Entities
 {
     public abstract class Camarote
     {
-        protected Camarote(string nome, uint quantidadeFilas,uint quantidadeAssentoPorFilas)
+        protected Camarote(string nome, int quantidadeFilas, int quantidadeAssentoPorFilas)
         {
             Nome = nome;
             ID = Guid.NewGuid();
@@ -20,8 +20,8 @@ namespace Questao3.Models.Entities
         public string Nome { get; private set; }
         public Guid ID { get; }
         public List<Fila> Filas { get; private set; } = new List<Fila>();
-        public uint QuantidadeFilas { get; private set; }
-        public uint QuantidadeAssentoPorFilas { get; private set; }
+        public int QuantidadeFilas { get; private set; }
+        public int QuantidadeAssentoPorFilas { get; private set; }
         public ETipoIngresso TipoIngressoAcesso { get; protected set; }
 
         public void MudarNome(string nome)

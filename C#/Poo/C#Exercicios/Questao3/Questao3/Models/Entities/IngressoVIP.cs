@@ -8,13 +8,10 @@ namespace Questao3.Models.Entities
 {
     public class IngressoVIP : Ingresso
     {
-        public IngressoVIP(double vipValorExtra) : base()
+        public IngressoVIP(double value) : base(value)
         {
-            Valor =  Valor + vipValorExtra;
             Tipo = ETipoIngresso.VIP;
         }
-
-        protected double VIPValorExtra { get; private set; }
 
         public override string ImprimirIngresso()
         {

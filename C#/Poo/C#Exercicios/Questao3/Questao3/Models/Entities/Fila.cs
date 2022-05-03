@@ -6,7 +6,7 @@ namespace Questao3.Models.Entities
 {
     public class Fila
     {
-        public Fila(char letra, uint quantidadeAssentos)
+        public Fila(char letra, int quantidadeAssentos)
         {
             Letra = letra;
             QuantidadeAssentos = quantidadeAssentos;
@@ -15,11 +15,11 @@ namespace Questao3.Models.Entities
 
         public char Letra { get; private set; }
         public List<Assento> Assentos { get; private set; } = new List<Assento>();
-        public uint QuantidadeAssentos { get; private set; }
+        public int QuantidadeAssentos { get; private set; }
 
         void AddAssentos()
         {
-            for(uint cont = 1; cont <= QuantidadeAssentos; cont++)
+            for(int cont = 1; cont <= QuantidadeAssentos; cont++)
             {
                 Assentos.Add(new Assento(Letra,cont));
             }

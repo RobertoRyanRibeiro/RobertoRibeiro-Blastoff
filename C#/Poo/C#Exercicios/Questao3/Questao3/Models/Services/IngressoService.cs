@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Text;
 using Questao3.Models.Entities;
@@ -9,10 +10,10 @@ namespace Questao3.Models.Services
     public static class IngressoService
     {
 
-        static IngressoNormal ingressoNormal = new IngressoNormal();
-        static IngressoVIP ingressoVIP = new IngressoVIP(5);
-        static IngressoCamaroteInferior ingressoCamaroteInferior;
-        static IngressoCamaroteSuperior ingressoCamaroteSuperior;
+        static IngressoNormal ingressoNormal = new IngressoNormal(5);
+        static IngressoVIP ingressoVIP = new IngressoVIP(10);
+        static IngressoCamaroteInferior ingressoCamaroteInferior = new IngressoCamaroteInferior(15);
+        static IngressoCamaroteSuperior ingressoCamaroteSuperior = new IngressoCamaroteSuperior(20);
         static User User = Season.User;
 
         public static void Listar()
@@ -20,7 +21,7 @@ namespace Questao3.Models.Services
             Console.WriteLine(ingressoNormal.ImprimirIngresso());
             Console.WriteLine(ingressoVIP.ImprimirIngresso());
             Console.WriteLine(ingressoCamaroteInferior.ImprimirIngresso());
-            //Console.WriteLine(ingressoNormal.ToString());
+            Console.WriteLine(ingressoCamaroteSuperior.ImprimirIngresso());
         }
 
 
@@ -29,7 +30,7 @@ namespace Questao3.Models.Services
             Console.Clear();
             ErrorTreatment(ingressoNormal);
             Season.User.ComprarIngresso(ingressoNormal);
-            Console.ReadKey();
+            Thread.Sleep(1000);
             UserOpMenu.View();
         }
 
@@ -38,29 +39,23 @@ namespace Questao3.Models.Services
             Console.Clear();
             ErrorTreatment(ingressoVIP);
             Season.User.ComprarIngresso(ingressoVIP);
-            Console.ReadKey();
+            Thread.Sleep(1000);
             UserOpMenu.View();
         }
 
         public static void ComprarIngressoCamaroteSuperior()
         {
-            //Season.User.ComprarIngresso(camaroteInferior);
+            Console.Clear();
+            CamaroteService.Navegar(Season.CamaroteSuperior, ingressoCamaroteSuperior);
+            UserOpMenu.View();
         }
         public static void ComprarIngressoCamaroteInferior()
         {
             Console.Clear();
-
-            CamaroteService camaroteService = new CamaroteService();
-            camaroteService.DesenharCamarote(Season.CamaroteInferior);
-
-            ErrorTreatment(ingressoCamaroteInferior);
-            Season.User.ComprarIngresso(ingressoCamaroteInferior);
-            Console.ReadKey();
+            CamaroteService.Navegar(Season.CamaroteInferior, ingressoCamaroteInferior);
             UserOpMenu.View();
         }
-
-
-        private static void ErrorTreatment(Ingresso ingresso)
+        public static void ErrorTreatment(Ingresso ingresso)
         {
             if (User.Ingresso == null)
             {
@@ -77,8 +72,8 @@ namespace Questao3.Models.Services
                 if (User.Dinheiro + User.Ingresso.Valor < ingresso.Valor)
                     SemDinheiroSuficienteMsg();
                 TrocarIngressoMsg(ingresso);
-
             }
+            UserOpMenu.View();
         }
 
         private static void SemDinheiroSuficienteMsg()
@@ -96,13 +91,13 @@ namespace Questao3.Models.Services
             Console.WriteLine("? - [Você já possui este Ingresso]...Clique qualquer tecla para continuar");
             Console.ReadKey();
             Console.ForegroundColor = ConsoleColor.White;
-            ComprarIngressoMenu.View();
+            UserOpMenu.View();
         }
 
         private static void TrocarIngressoMsg(Ingresso ingresso)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("? - [Você já possui um Ingresso, deseja trocar?]...Aperter ENTER para ");
+            Console.Write("? - [Você já possui um Ingresso, deseja trocar?]...Aperter SPACE para ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("Sim");
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -111,8 +106,9 @@ namespace Questao3.Models.Services
             Console.WriteLine("Não");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.ForegroundColor = ConsoleColor.White;
-            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            if (Console.ReadKey().Key == ConsoleKey.Spacebar)
             {
+                Console.Clear();
                 User.TrocarIngresso(ingresso);
                 Console.WriteLine("+================+");
                 Console.Write("|");
@@ -121,12 +117,8 @@ namespace Questao3.Models.Services
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("|");
                 Console.WriteLine("+================+");
-                Console.WriteLine("|Aperte qualquer tecla para continuar...");
-                Console.ReadKey();
-                ComprarIngressoMenu.View();
+                Thread.Sleep(1000);
             }
-            else
-                UserOpMenu.View();
         }
     }
 }

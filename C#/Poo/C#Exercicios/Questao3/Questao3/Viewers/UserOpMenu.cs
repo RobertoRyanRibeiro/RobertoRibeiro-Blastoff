@@ -19,7 +19,7 @@ namespace Questao3.Viewers
         public static List<GenericMenuOption> options = new List<GenericMenuOption>
             {
                 new GenericMenuOption("Comprar Ingresso", ComprarIngressoMenu.View),
-                new GenericMenuOption("Assistir Show", null),
+                //new GenericMenuOption("Assistir Show", null),
                 new GenericMenuOption("Banco", BancoMenu.View)
             };
 
@@ -40,6 +40,8 @@ namespace Questao3.Viewers
             Console.Clear();
             try
             {
+                Console.Clear();
+                Console.BackgroundColor = ConsoleColor.Black;
                 Head();
                 Body();
                 Bottom();

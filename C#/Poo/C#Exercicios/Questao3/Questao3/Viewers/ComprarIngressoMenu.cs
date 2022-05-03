@@ -44,6 +44,8 @@ namespace Questao3.Viewers
             Console.Clear();
             try
             {
+                Console.Clear();
+                Console.BackgroundColor = ConsoleColor.Black;
                 Head();
                 Body();
                 Bottom();
