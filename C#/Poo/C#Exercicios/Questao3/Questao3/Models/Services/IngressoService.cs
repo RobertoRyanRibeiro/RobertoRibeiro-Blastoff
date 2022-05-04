@@ -10,7 +10,7 @@ namespace Questao3.Models.Services
     public static class IngressoService
     {
 
-        static IngressoNormal ingressoNormal = new IngressoNormal(5);
+        static IngressoNormal ingressoNormal = new IngressoNormal();
         static IngressoVIP ingressoVIP = new IngressoVIP(10);
         static IngressoCamaroteInferior ingressoCamaroteInferior = new IngressoCamaroteInferior(15);
         static IngressoCamaroteSuperior ingressoCamaroteSuperior = new IngressoCamaroteSuperior(20);

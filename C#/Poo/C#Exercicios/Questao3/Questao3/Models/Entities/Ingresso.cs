@@ -9,9 +9,9 @@ namespace Questao3.Models.Entities
     public abstract class Ingresso
     {
        
-        public Ingresso(double valor)
+        public Ingresso()
         {
-            Valor = valor;
+            Valor = 5;
         }
 
         public double Valor { get; protected set; }
@@ -30,9 +30,11 @@ namespace Questao3.Models.Entities
             return sb.ToString();   
         }
 
+        public virtual double GetValor() { return Valor; }
+
         protected virtual string ExibirValor()
         {
-            return $"|Valor - {Valor.ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"))}";
+            return $"|Valor - {GetValor().ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"))}";
         }
     }
 }

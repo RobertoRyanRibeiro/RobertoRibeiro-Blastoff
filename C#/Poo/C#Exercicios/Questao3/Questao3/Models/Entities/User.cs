@@ -18,7 +18,7 @@ namespace Questao3.Models.Entities
 
         public void ComprarIngresso(Ingresso ingresso)
         {
-            Dinheiro -= ingresso.Valor;
+            Dinheiro -= ingresso.GetValor();
             Ingresso = ingresso;
             Console.WriteLine(ingresso.ImprimirIngresso());
         }
@@ -26,16 +26,16 @@ namespace Questao3.Models.Entities
         public void TrocarIngresso(Ingresso ingresso)
         {
             var dif = 0.0;
-            if(Ingresso.Valor > ingresso.Valor)
+            if(Ingresso.GetValor() > ingresso.GetValor())
             {
-                dif = Ingresso.Valor - ingresso.Valor;
+                dif = Ingresso.GetValor() - ingresso.GetValor();
                 Dinheiro += dif;
                 Ingresso = ingresso;
                 Console.WriteLine($"|O Reembolso foi: {dif:C}");
             }
             else
             {
-                dif = ingresso.Valor - Ingresso.Valor;
+                dif = ingresso.GetValor() - Ingresso.GetValor();
                 Dinheiro -= dif;
                 Ingresso = ingresso;
                 Console.WriteLine($"|A Diferença foi: {dif:C}");

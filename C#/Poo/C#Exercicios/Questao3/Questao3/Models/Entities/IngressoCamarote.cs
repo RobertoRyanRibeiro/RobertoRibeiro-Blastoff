@@ -6,7 +6,7 @@ using Questao3.Models.Entities.Enum;
 
 namespace Questao3.Models.Entities
 {
-    public abstract class IngressoCamarote : Ingresso
+    public abstract class IngressoCamarote : IngressoVIP
     {
         public IngressoCamarote(double valorVipCamarote) : base(valorVipCamarote)
         {

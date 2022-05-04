@@ -8,8 +8,11 @@ namespace Questao3.Models.Entities
 {
     public class IngressoVIP : Ingresso
     {
-        public IngressoVIP(double value) : base(value)
+        protected double extra;
+
+        public IngressoVIP(double value) : base()
         {
+            extra = value;
             Tipo = ETipoIngresso.VIP;
         }
 
@@ -18,9 +21,14 @@ namespace Questao3.Models.Entities
             return base.ImprimirIngresso();
         }
 
+        public override double GetValor()
+        {
+            return Valor + extra;
+        }
+
         protected override string ExibirValor()
         {
-            return $"|Valor - {Valor.ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"))}";
+            return $"|Valor - {GetValor().ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"))}";
         }
     }
 }
