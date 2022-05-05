@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using Questao4.Controller;
+using Controller;
 
-namespace Questao4.Generics
+namespace Generics
 {
     public static class GenericMenuModel
     {

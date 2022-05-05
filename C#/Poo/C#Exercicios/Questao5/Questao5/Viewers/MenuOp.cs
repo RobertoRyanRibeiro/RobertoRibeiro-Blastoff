@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using Questao4.Controller;
+using Controller;
+using Generics;
+using Questao5.Models.Service;
 
-namespace Questao4.Generics
+namespace Questao5.Viewers
 {
-    public static class GenericMenuModel
+    public static class MenuOp
     {
         private static int _selectOp = 1;
         private static bool _confirmed;
@@ -14,7 +16,11 @@ namespace Questao4.Generics
         public static GenericMenuOption OpSelected { get; private set; }
 
 
-        private static List<GenericMenuOption> options;
+        private static List<GenericMenuOption> options = new List<GenericMenuOption>()
+        {
+            new GenericMenuOption("Inserir Corpo Celeste",CelestialBodyService.InserirCelestial),
+            new GenericMenuOption("Ver Corpos Celestes", CelestialBodyService.ExibirCelestial) 
+        };
 
         static void OrderOptions()
         {
@@ -54,7 +60,13 @@ namespace Questao4.Generics
 
         static void Head()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" =|Welcome=");
 
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("=================================================");
+            Console.WriteLine("  = MENU =");
+            Console.WriteLine("");
         }
 
         static void Body()

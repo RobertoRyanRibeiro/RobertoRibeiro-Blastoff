@@ -78,8 +78,9 @@ namespace Questao4.Viewers
             {
                 SelectOption();
                 DrawMarkOption();
+                Console.ForegroundColor = Console.BackgroundColor;
                 _confirmed = MoveOption(Console.ReadKey().Key);
-
+                Console.ForegroundColor = ConsoleColor.White;
             } while (!_confirmed);
         }
 
