@@ -18,7 +18,7 @@ namespace Questao5.Models.Service
         {
             Console.Clear();
 
-            var nomeFormat = new Regex(@"^[\da-zA-zà-ÿ'][a-zA-zà-ÿ\d'\s]*$");
+            var nomeFormat = new Regex(@"^[\da-zA-zà-ÿÀ-ÿ'][a-zA-zà-ÿÀ-ÿ\d'\s]*$");
             //=========================Nome=========================
             Console.WriteLine("|Digite o Nome do Corpo Celeste");
             Console.WriteLine("===============================");

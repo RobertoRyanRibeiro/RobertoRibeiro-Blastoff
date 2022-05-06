@@ -13,7 +13,7 @@ namespace Questao4.Models.Service
         static Livro EntradaDados()
         {
             Regex isbnRegex = new Regex(@"^\d{3}\-\d{2}\-\d{5}\-\d{2}\-\d{1}$");
-            Regex tituloRegex = new Regex(@"^[a-zA-zà-ÿ'][a-zA-zà-ÿ'\s]*$");
+            Regex tituloRegex = new Regex(@"^[a-zA-zà-ÿÀ-ÿ'][a-zA-zà-ÿÀ-ÿ'\s]*$");
             Match match;
 
             Console.Clear();

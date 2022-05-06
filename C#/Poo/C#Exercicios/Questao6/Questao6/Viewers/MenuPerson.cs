@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using Controller;
 using Generics;
+using Questao6.Models.Service;
 
 namespace Questao6.Viewers
 {
@@ -16,9 +17,10 @@ namespace Questao6.Viewers
 
         private static List<GenericMenuOption> options = new List<GenericMenuOption>()
         {
-            new GenericMenuOption("Array",MenuArray.View),
-            new GenericMenuOption("Array",MenuMatriz.View),
-            new GenericMenuOption("Array",MenuPerson.View)
+            new GenericMenuOption("Inserir Pessoa",PersonService.CreatePerson),
+            new GenericMenuOption("Escrever Message",PersonService.Message),
+            new GenericMenuOption("Exibir Pessoa",PersonService.Show),
+            new GenericMenuOption("Back",MenuOp.View)
         };
 
         static void OrderOptions()
