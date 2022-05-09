@@ -29,6 +29,8 @@ namespace Questao5.Models.Service
             Console.WriteLine("|Digite o Tipo do Corpo Celeste A-Asteroide P-Planeta N-Nebula");
             Console.WriteLine("===============================");
             var tipoC = char.Parse(Console.ReadLine().ToUpper());
+            if (tipoC == ' ')
+                throw new ArgumentException("|Error - Formatação Op não pode ser vazia");
             //=========================Massa=========================
             Console.WriteLine("|Digite a Massa do Corpo Celeste");
             Console.WriteLine("===============================");
