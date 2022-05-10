@@ -141,7 +141,7 @@ namespace Questao11.Models.Service
         public static void CalculateContract()
         {
             ErrorEmpty();
-            pessoa.CalcularPrestacao(pessoa);
+            Contrato.CalcularPrestacao(pessoa);
             MenuEspecial.View();
         }
 

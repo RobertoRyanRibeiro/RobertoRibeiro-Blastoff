@@ -16,11 +16,11 @@ namespace Questao11.Models.Entities
 
         public int Numero { get; private set; }
         public string Contratante { get; private set; }
-        public float Valor { get; private set; }
-        public int Prazo { get; private set; }
+        public static float Valor { get; private set; }
+        public static int Prazo { get; private set; }
 
 
-        protected double ValorPrestacao { get; set; }
+        protected static double ValorPrestacao { get; set; }
 
 
         public virtual void CalcularPrestacao()
@@ -29,7 +29,7 @@ namespace Questao11.Models.Entities
         }
 
 
-        public virtual void CalcularPrestacao(Contrato obj)
+        public static void CalcularPrestacao(Contrato obj)
         {
             ValorPrestacao = Valor / Prazo;
             if(obj.GetType() == typeof(ContratoPessoaFisica))
