@@ -18,6 +18,7 @@ namespace Questao7.Models.Entities
         public void DescontaMensalidade()
         {
             SaldoFinal = Saldo - Mensalidade;
+            Saldo = SaldoFinal;
         }
 
         public override void ShowDados()

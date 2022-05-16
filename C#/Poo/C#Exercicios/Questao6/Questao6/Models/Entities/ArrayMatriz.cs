@@ -60,6 +60,7 @@ namespace Questao6.Models.Entities
                     if (array[l, c] < minor)
                         minor = array[l, c];
                 }
+            Console.WriteLine("==== Maior & Menor ====");
             Console.WriteLine($"|Maior - {major}");
             Console.WriteLine($"|Menor - {minor}");
         }

@@ -12,7 +12,6 @@ namespace Questao10.Models.Entities
 
         public override void PagarParcela(int parcelas)
         {
-            parcelas = 1;
             base.PagarParcela(parcelas);
         }
 

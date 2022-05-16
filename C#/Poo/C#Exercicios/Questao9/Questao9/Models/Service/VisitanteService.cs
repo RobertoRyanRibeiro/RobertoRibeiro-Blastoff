@@ -35,6 +35,10 @@ namespace Questao9.Models.Service
             Console.WriteLine("|Digite a Data : dd/MM/yyyy");
             Console.WriteLine("========================================");
             var data = DateTime.Parse(Console.ReadLine(), CultureInfo.CreateSpecificCulture("pt-BR"));
+            if (data.Year > DateTime.Now.Year)
+                throw new ArgumentException("|????? - Você veio do futuro??");
+            if (data.Year > DateTime.Now.Year - 5)
+                throw new ArgumentException("|Quer uma chupeta? - Muito novo não??");
             //=================================== CodTema =======================================
             Console.Clear();
             Console.WriteLine("|Vintage - 1");
@@ -63,6 +67,7 @@ namespace Questao9.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formatação Invalida");
                 Thread.Sleep(1000);
                 CreateVisitante();
@@ -70,6 +75,7 @@ namespace Questao9.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateVisitante();
@@ -77,13 +83,15 @@ namespace Questao9.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 CreateVisitante();
             }
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateVisitante();
@@ -147,6 +155,7 @@ namespace Questao9.Models.Service
                     case 6: break;
                     default:
                         Console.Clear();
+                        ErrorMsg();
                         Console.WriteLine("|Error - Esta opção não existe");
                         Thread.Sleep(1000);
                         visitante.Reset();
@@ -171,9 +180,21 @@ namespace Questao9.Models.Service
         static void ErrorVisitante()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("|Está vazio");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
             Thread.Sleep(1000);
             MenuVisitante.View();
+        }
+
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Exception");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
         }
 
         static void WaitUntilClick()

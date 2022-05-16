@@ -55,22 +55,25 @@ namespace Questao8.Models.Entities
 
         public virtual void ImprimirDados()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Carro =");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"|Placa - {Placa}");
             Console.WriteLine($"|Modelo - {Modelo}");
             Console.WriteLine($"|Cor - {Cor}");
             Console.WriteLine($"|Ano - {Ano}");
-            Console.WriteLine($"|Valor - {valor}");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Combustivel =");
+            Console.ForegroundColor = ConsoleColor.White;
             if (tipoGasosa == Gasolina)
-                Console.WriteLine("Gasolina");
+                Console.WriteLine("|Gasolina");
             if (tipoGasosa == Alcool)
-                Console.WriteLine("Alcool");
+                Console.WriteLine("|Alcool");
             if (tipoGasosa == Diesel)
-                Console.WriteLine("Diesel");
+                Console.WriteLine("|Diesel");
             if (tipoGasosa == Gas)
-                Console.WriteLine("Gas");
-
+                Console.WriteLine("|Gas");
+            Console.WriteLine($"|Valor de Acordo C/Combustivel - {valor:C}");
         }
     }
 }

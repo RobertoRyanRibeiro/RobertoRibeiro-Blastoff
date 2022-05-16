@@ -59,7 +59,7 @@ namespace Questao3.Models.Services
         {
             if (User.Ingresso == null)
             {
-                if (User.Dinheiro >= ingresso.Valor)
+                if (User.Dinheiro >= ingresso.GetValor())
                     return;
                 else
                     SemDinheiroSuficienteMsg();
@@ -69,7 +69,7 @@ namespace Questao3.Models.Services
                 MesmoIngressoMsg();
             else
             {
-                if (User.Dinheiro + User.Ingresso.Valor < ingresso.Valor)
+                if (User.Dinheiro + User.Ingresso.GetValor() < ingresso.GetValor())
                     SemDinheiroSuficienteMsg();
                 TrocarIngressoMsg(ingresso);
             }

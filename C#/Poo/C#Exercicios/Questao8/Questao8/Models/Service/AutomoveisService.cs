@@ -16,6 +16,7 @@ namespace Questao8.Models.Service
         static Automovel Entrada()
         {
             Console.Clear();
+            Console.WriteLine("== Carro ==");
             //=================================== Formatos =======================================
             var placaFormato = new Regex(@"^\w{3}\d{1}\w{1}\d{2}$");
             var modeloFormato = new Regex(@"^[a-zA-zà-ÿÀ-ÿ'\d][a-zA-zà-ÿÀ-ÿ'\s\d]*$");
@@ -23,7 +24,7 @@ namespace Questao8.Models.Service
             //=================================== Placa =======================================
             Console.WriteLine("|Digite a Placa : Formato => AAA1A11");
             Console.WriteLine("========================================");
-            var placa = Console.ReadLine();
+            var placa = Console.ReadLine().ToUpper();
             if (!placaFormato.IsMatch(placa))
                 throw new ArgumentException("|Error - Formato Placa Invalida");
             //=================================== Modelo =======================================
@@ -44,8 +45,8 @@ namespace Questao8.Models.Service
             var ano = short.Parse(Console.ReadLine());
             if (ano < 0)
                 throw new ArgumentException("|Error - O ano precisa ser um ano valido não negativo");
-            if (ano > DateTime.Now.Year)
-                throw new ArgumentException("|Error - O Carro precisa ser desse ano");
+            if (ano > DateTime.Now.Year + 1)
+                throw new ArgumentException("|Error - O Carro não pode ser de um futuro tão distante");
             //=================================== Combustivel =======================================
             Console.Clear();
             Console.WriteLine("|Gasolina - 1");
@@ -74,6 +75,7 @@ namespace Questao8.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formatação Invalida");
                 Thread.Sleep(1000);
                 CreateAutomovel();
@@ -81,6 +83,7 @@ namespace Questao8.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateAutomovel();
@@ -88,6 +91,7 @@ namespace Questao8.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateAutomovel();
@@ -95,6 +99,7 @@ namespace Questao8.Models.Service
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateAutomovel();
@@ -115,6 +120,7 @@ namespace Questao8.Models.Service
         static AutomovelLuxo EntradaLuxo()
         {
             Console.Clear();
+            Console.WriteLine("== Carro ==");
             //=================================== Formatos =======================================
             var placaFormato = new Regex(@"^\w{3}\d{1}\w{1}\d{2}$");
             var modeloFormato = new Regex(@"^[a-zA-zà-ÿÀ-ÿ'\d][a-zA-zà-ÿÀ-ÿ'\s\d]*$");
@@ -122,7 +128,7 @@ namespace Questao8.Models.Service
             //=================================== Placa =======================================
             Console.WriteLine("|Digite a Placa : Formato => AAA1A11");
             Console.WriteLine("========================================");
-            var placa = Console.ReadLine();
+            var placa = Console.ReadLine().ToUpper();
             if (!placaFormato.IsMatch(placa))
                 throw new ArgumentException("|Error - Formato Placa Invalida");
             //=================================== Modelo =======================================
@@ -143,8 +149,8 @@ namespace Questao8.Models.Service
             var ano = short.Parse(Console.ReadLine());
             if (ano < 0)
                 throw new ArgumentException("|Error - O ano precisa ser um ano valido não negativo");
-            if (ano > DateTime.Now.Year)
-                throw new ArgumentException("|Error - O Carro precisa ser desse ano");
+            if (ano > DateTime.Now.Year + 1)
+                throw new ArgumentException("|Error - O Carro não pode ser de um futuro tão distante");
             //=================================== Combustivel =======================================
             Console.Clear();
             Console.WriteLine("|Gasolina - 1");
@@ -167,6 +173,7 @@ namespace Questao8.Models.Service
             do
             {
                 Console.Clear();
+                Console.WriteLine("== Acessorios ==");
                 if(!automovelLuxo.HasArCondicionado)
                     Console.WriteLine("|[ ]Ar-Condicionado - 1");
                 else
@@ -190,6 +197,7 @@ namespace Questao8.Models.Service
                     case 4: break;
                     default:
                         Console.Clear();
+                        ErrorMsg();
                         Console.WriteLine("|Error - Esta opção não existe");
                         Thread.Sleep(1000);
                         automovelLuxo.Reset();
@@ -213,6 +221,7 @@ namespace Questao8.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formatação Invalida");
                 Thread.Sleep(1000);
                 CreateAutomovelLuxo();
@@ -220,6 +229,7 @@ namespace Questao8.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateAutomovelLuxo();
@@ -227,6 +237,7 @@ namespace Questao8.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateAutomovelLuxo();
@@ -234,6 +245,7 @@ namespace Questao8.Models.Service
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateAutomovelLuxo();
@@ -252,9 +264,20 @@ namespace Questao8.Models.Service
         static void ErrorAutomovel()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("|Está vazio");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
             Thread.Sleep(1000);
             MenuOp.View();
+        }
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Exception");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
         }
 
         static void WaitUntilClick()
@@ -263,6 +286,7 @@ namespace Questao8.Models.Service
             Console.ReadKey();
             MenuOp.View();
         }
+
     }
 
 }

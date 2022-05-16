@@ -21,6 +21,7 @@ namespace Questao6.Models.Service
         public static void Show()
         {
             ErrorArray();
+            Console.WriteLine("==== Valores ====");
             array.ShowValues();
             WaitUntilClick();
         }
@@ -28,7 +29,8 @@ namespace Questao6.Models.Service
         public static void Sum()
         {
             ErrorArray();
-            Console.WriteLine(array.Sum());
+            Console.WriteLine("==== Soma ====");
+            Console.WriteLine(array.Sum().ToString("F2"));
             WaitUntilClick();
         }
 
@@ -43,7 +45,8 @@ namespace Questao6.Models.Service
         {
             ErrorArray();
             Console.Clear();
-            Console.WriteLine(array.Media());
+            Console.WriteLine("==== Media ====");
+            Console.WriteLine(array.Media().ToString("F2"));
             WaitUntilClick();
 
         }
@@ -53,7 +56,10 @@ namespace Questao6.Models.Service
             Console.Clear();
             if (!array.isNotEmpty)
             {
-                Console.WriteLine("O Array está vazio");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("|O Array está vazio");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("===========================");
                 Thread.Sleep(1000);
                 MenuMatriz.View();
             }

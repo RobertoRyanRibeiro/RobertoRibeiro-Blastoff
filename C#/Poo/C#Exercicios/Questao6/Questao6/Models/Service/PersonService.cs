@@ -81,6 +81,7 @@ namespace Questao6.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formatação Invalida");
                 Thread.Sleep(1000);
                 CreatePerson();
@@ -88,6 +89,7 @@ namespace Questao6.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreatePerson();
@@ -95,6 +97,7 @@ namespace Questao6.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreatePerson();
@@ -103,6 +106,7 @@ namespace Questao6.Models.Service
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreatePerson();
@@ -136,9 +140,20 @@ namespace Questao6.Models.Service
             WaitUntilClick();
         }
 
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Na Entrada de Dados");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
+        }
+
         static void ErrorPerson()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("|Error - Está vazio");
+            Console.ForegroundColor = ConsoleColor.White;
             Thread.Sleep(1000);
             MenuPerson.View();
         }

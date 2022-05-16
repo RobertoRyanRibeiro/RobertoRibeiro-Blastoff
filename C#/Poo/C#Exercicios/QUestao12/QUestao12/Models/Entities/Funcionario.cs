@@ -27,7 +27,9 @@ namespace Questao12.Models.Entities
         public virtual void ExibirInfo()
         {
             Console.Clear();
-            Console.WriteLine(" = Dados =");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" == Dados ==");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"|Nome - {Nome}");
             Console.WriteLine($"|CPF - {Cpf}");
             Console.WriteLine($"|Salario - {Salario:C}");

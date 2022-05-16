@@ -35,6 +35,10 @@ namespace Questao9.Models.Service
             Console.WriteLine("|Digite a Data : dd/MM/yyyy");
             Console.WriteLine("========================================");
             var data = DateTime.Parse(Console.ReadLine(), CultureInfo.CreateSpecificCulture("pt-BR"));
+            if (data.Year > DateTime.Now.Year)
+                throw new ArgumentException("|????? - Você veio do futuro??");
+            if (data.Year > DateTime.Now.Year - 5)
+                throw new ArgumentException("|Quer uma chupeta? - Muito novo não??");
             //=================================== NumVale =======================================
             Console.WriteLine("|Digite o Numero do Vale ");
             Console.WriteLine("========================================");
@@ -68,6 +72,7 @@ namespace Questao9.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formatação Invalida");
                 Thread.Sleep(1000);
                 CreateVisitante();
@@ -75,6 +80,7 @@ namespace Questao9.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateVisitante();
@@ -82,13 +88,15 @@ namespace Questao9.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 CreateVisitante();
             }
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CreateVisitante();
@@ -103,7 +111,7 @@ namespace Questao9.Models.Service
             if (visitante.Quant != 0)
             {
                 Console.Clear();
-                Console.WriteLine("|A quantidade já foi calculada");
+                Console.WriteLine("|A Quantidade já foi calculada");
                 Thread.Sleep(1000);
                 MenuVisitantePremium.View();
             }
@@ -152,6 +160,7 @@ namespace Questao9.Models.Service
                     case 6: break;
                     default:
                         Console.Clear();
+                        ErrorMsg();
                         Console.WriteLine("|Error - Esta opção não existe");
                         Thread.Sleep(1000);
                         visitante.Reset();
@@ -181,6 +190,7 @@ namespace Questao9.Models.Service
             if(valor < 0)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - O valor não pode ser negativo");
                 Thread.Sleep(1000);
                 Comer();
@@ -188,6 +198,7 @@ namespace Questao9.Models.Service
             if(valor == 0)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - O valor não pode ser zero");
                 Thread.Sleep(1000);
                 Comer();
@@ -195,6 +206,7 @@ namespace Questao9.Models.Service
             if(valor > visitante.Saldo)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Você não tem dinheiro suficiente");
                 Thread.Sleep(1000);
                 Comer();
@@ -213,10 +225,22 @@ namespace Questao9.Models.Service
             WaitUntilClick();
         }
 
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Exception");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
+        }
+
         static void ErrorVisitante()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("|Está vazio");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
             Thread.Sleep(1000);
             MenuVisitantePremium.View();
         }

@@ -53,24 +53,28 @@ namespace Questao10.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formatação Invalida");
                 WaitUntilThread();
             }
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 WaitUntilThread();
             }
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 WaitUntilThread();
             }
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 WaitUntilThread();
             }
@@ -85,6 +89,7 @@ namespace Questao10.Models.Service
 
             if (contaEstudante.Status != Enum.EStatus.Pendente)
             {
+                ErrorMsg();
                 Console.WriteLine("|Error - A Compra já foi finalizada");
                 Thread.Sleep(1000);
                 Console.Clear();
@@ -94,20 +99,13 @@ namespace Questao10.Models.Service
             try
             {
                 Console.Clear();
-                Console.WriteLine("Quantas parcelas vai pagar?");
-                var qtd = int.Parse(Console.ReadLine());
-                if (qtd < 0)
-                    throw new ArgumentException("|Error - A Quantidade não pode ser negativa");
-                if (qtd == 0)
-                    throw new ArgumentException("|Error - A Quantidade não pode ser zero");
-                if (qtd > contaEstudante.Parcelas)
-                    throw new ArgumentException("|Error - Não existe essa Quantidade de Parcelas");
-                contaEstudante.PagarParcela(qtd);
+                contaEstudante.PagarParcela(1);
                 MenuContaEstudante.View();
             }
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formtação Invalida");
                 Thread.Sleep(1000);
                 PagarParcela();
@@ -115,6 +113,7 @@ namespace Questao10.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 PagarParcela();
@@ -122,6 +121,7 @@ namespace Questao10.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 PagarParcela();
@@ -136,6 +136,7 @@ namespace Questao10.Models.Service
 
             if (contaEstudante.Status != Enum.EStatus.Pendente)
             {
+                ErrorMsg();
                 Console.WriteLine("|Error - A Compra já foi finalizada");
                 Thread.Sleep(1000);
                 Console.Clear();
@@ -156,6 +157,7 @@ namespace Questao10.Models.Service
 
             if (contaEstudante.Status != Enum.EStatus.Pendente)
             {
+                ErrorMsg();
                 Console.WriteLine("|Error - A Compra já foi finalizada");
                 Thread.Sleep(1000);
                 Console.Clear();
@@ -175,6 +177,7 @@ namespace Questao10.Models.Service
 
             if (contaEstudante.Status != Enum.EStatus.Pendente)
             {
+                ErrorMsg();
                 Console.WriteLine("|Error - A Compra já foi finalizada");
                 Thread.Sleep(1000);
                 Console.Clear();
@@ -203,6 +206,7 @@ namespace Questao10.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formtação Invalida");
                 Thread.Sleep(1000);
                 RenegociarCompra();
@@ -210,6 +214,7 @@ namespace Questao10.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 RenegociarCompra();
@@ -217,6 +222,7 @@ namespace Questao10.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 RenegociarCompra();
@@ -257,6 +263,7 @@ namespace Questao10.Models.Service
                 case 2: contaEstudante.Especial(new ContaEstudante(preco, parcela, contaEstudante.Tipo)); break;
                 default:
                     Console.Clear();
+                    ErrorMsg();
                     Console.WriteLine("|Error - Esta Op não existe");
                     Thread.Sleep(1000);
                     Console.Clear();
@@ -274,6 +281,7 @@ namespace Questao10.Models.Service
             //Verificando se a compra foi finalizada
             if (contaEstudante.Status != Enum.EStatus.Pendente)
             {
+                ErrorMsg();
                 Console.WriteLine("|Error - A Compra já foi finalizada");
                 Thread.Sleep(1000);
                 Console.Clear();
@@ -288,24 +296,28 @@ namespace Questao10.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error - Formatação Invalida");
                 WaitUntilThreadEspecial();
             }
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 WaitUntilThreadEspecial();
             }
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 WaitUntilThreadEspecial();
             }
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 WaitUntilThreadEspecial();
             }
@@ -326,7 +338,10 @@ namespace Questao10.Models.Service
         static void ErrorEmpty()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("|Está Vazio");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
             Thread.Sleep(1000);
             MenuContaEstudante.View();
         }
@@ -336,6 +351,15 @@ namespace Questao10.Models.Service
             Console.WriteLine("|Digite qualquer tecla para continuar...");
             Console.ReadKey();
             MenuContaEstudante.View();
+        }
+
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Exception");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
         }
 
         static void WaitUntilThread()

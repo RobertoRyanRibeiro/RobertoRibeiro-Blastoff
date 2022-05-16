@@ -36,6 +36,8 @@ namespace Questao10.Models.Entities
         {
             Parcelas -= parcelas;
             Total -= ValorParcela * parcelas;
+            if (Parcelas == 0)
+                Status = EStatus.Finalizada;
         }
         
         public virtual void QuitarCompra()
@@ -69,12 +71,16 @@ namespace Questao10.Models.Entities
 
         public void ImprimirDados()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Compra =");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"|Preco - {Preco:C}");
             Console.WriteLine($"|Parcelas - {Parcelas}");
             Console.WriteLine($"|Tipo - {Tipo}");
             Console.WriteLine($"|Status - {Status}");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Parcelas & Total =");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"|Valor por Parcela - {ValorParcela:C}");
             Console.WriteLine($"|Total atual da Conta - {Total:C}");
             if(Juros != 0)

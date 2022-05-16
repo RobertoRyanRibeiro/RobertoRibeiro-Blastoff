@@ -116,7 +116,10 @@ namespace Questao12.Models.Service
             Console.Clear();
             if (gerente == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("|Error - Não existe gerente ainda");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("=================");
                 Thread.Sleep(1000);
                 Console.Clear();
                 MenuGerente.View();

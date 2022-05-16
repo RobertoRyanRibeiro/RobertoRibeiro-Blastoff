@@ -33,7 +33,7 @@ namespace Questão1.Entities.SharedForms
         }
 
         //Auto-Property
-        public bool IsInvalid { get; private set; } = false;
+        protected bool IsInvalid { get; set; } = false;
 
         //Property
         public double Width

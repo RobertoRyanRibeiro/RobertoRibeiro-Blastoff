@@ -124,7 +124,10 @@ namespace Questao12.Models.Service
             Console.Clear();
             if (engenheiro == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("|Error - Não existe engenheiro ainda");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("=================");
                 Thread.Sleep(1000);
                 Console.Clear();
                 MenuEngenheiro.View();
@@ -149,9 +152,9 @@ namespace Questao12.Models.Service
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("|ERROR");
-            Console.WriteLine("=================");
+            Console.WriteLine("|Error");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("=================");
         }
 
     }

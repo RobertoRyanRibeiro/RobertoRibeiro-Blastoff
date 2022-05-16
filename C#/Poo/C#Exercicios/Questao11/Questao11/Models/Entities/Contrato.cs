@@ -53,10 +53,12 @@ namespace Questao11.Models.Entities
 
         public virtual void ExibirInfo()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Contrato =");
-            Console.WriteLine($"|Valor - {Valor}");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"|Valor - {Valor:C}");
             Console.WriteLine($"|Prazo - {Prazo}");
-            Console.WriteLine($"|Valor da Prestação - {ValorPrestacao}");
+            Console.WriteLine($"|Valor da Prestação - {ValorPrestacao:C}");
         }
 
     }

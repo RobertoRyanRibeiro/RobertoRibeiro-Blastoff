@@ -117,9 +117,7 @@
   <ItemGroup>
     <Resource Include="Imagens\icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sound\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Recursos\load_loader.gif" />
     <Content Include="Recursos\piao-do-bau-com-musica.mp3" />

@@ -23,7 +23,9 @@ namespace Questao9.Models.Entities
         public override void ImprimirDados()
         {
             base.ImprimirDados();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Saldo =");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"|Saldo - {Saldo:C}");
             Console.WriteLine($"|NumVale - {NumeroVale}");
             Console.WriteLine("");

@@ -77,13 +77,17 @@ namespace Questao9.Models.Entities
 
         public virtual void ImprimirDados()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Visitante =");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"|Nome - {Nome}");
             Console.WriteLine($"|Cpf - {Cpf}");
             Console.WriteLine($"|Data Nascimento - {DataNascimento:dd/MM/yyyy}");
             Console.WriteLine($"|Cod Tema - {CodTema}");
             Console.WriteLine($"|Quantidade de Obras - {Quant}");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Tema =");
+            Console.ForegroundColor = ConsoleColor.White;
             if (CodTema == Vintage)
                 Console.WriteLine("|Vintage");
             if (CodTema == Numismatica)
@@ -94,7 +98,6 @@ namespace Questao9.Models.Entities
                 Console.WriteLine("|Pinturas");
             if (CodTema == Escultura)
                 Console.WriteLine("|Escultura");
-            Console.WriteLine("");
         }
     }
 }

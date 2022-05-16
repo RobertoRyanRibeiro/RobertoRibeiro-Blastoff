@@ -41,6 +41,8 @@ namespace Questao7.Models.Service
             var rendimento = double.Parse(Console.ReadLine());
             if (rendimento < 0)
                 throw new ArgumentException("|Error - Rendimento não pode ser negativo");
+            if (rendimento == 0)
+                throw new ArgumentException("|Error - Rendimento não pode ser igual a zero");
             //=================================== Object =======================================
             poupanca = new ContaPoupanca(numero, agencia, saldo, rendimento);
             MenuContaPoupanca.View();
@@ -57,6 +59,7 @@ namespace Questao7.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("|Error - Formatação Invalida");
                 Thread.Sleep(1000);
@@ -65,6 +68,7 @@ namespace Questao7.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CriarConta();
@@ -72,6 +76,7 @@ namespace Questao7.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CriarConta();
@@ -80,6 +85,7 @@ namespace Questao7.Models.Service
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CriarConta();
@@ -94,12 +100,14 @@ namespace Questao7.Models.Service
             var meses = int.Parse(Console.ReadLine());
             if (meses < 0)
             {
+                ErrorMsg();
                 Console.WriteLine("|Error - Quantidade de Meses não pode ser negativo");
                 Thread.Sleep(1000);
                 MenuContaPoupanca.View();
             }
             if (meses == 0)
             {
+                ErrorMsg();
                 Console.WriteLine("|Error - Quantidade de Meses não pode ser zero");
                 Thread.Sleep(1000);
                 MenuContaPoupanca.View();
@@ -115,12 +123,24 @@ namespace Questao7.Models.Service
             EsperarClick();
         }
 
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Exception");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
+        }
+
         static void ErrorConta()
         {
             Console.Clear();
             if (poupanca == null)
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("|Error - Conta Vazia");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("===========================");
                 Thread.Sleep(1000);
                 MenuContaPoupanca.View();
             }

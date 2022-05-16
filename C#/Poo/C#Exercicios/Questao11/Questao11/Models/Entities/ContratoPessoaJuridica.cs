@@ -25,7 +25,9 @@ namespace Questao11.Models.Entities
         public override void ExibirInfo()
         {
             base.ExibirInfo();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = DADOS EXTRA =");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"|CPNJ - {CNPJ}");
             Console.WriteLine($"|IEEC - {IEEC}");
         }

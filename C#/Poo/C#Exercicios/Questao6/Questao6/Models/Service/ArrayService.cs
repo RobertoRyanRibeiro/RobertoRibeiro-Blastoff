@@ -21,6 +21,7 @@ namespace Questao6.Models.Service
         public static void Show()
         {
             ErrorArray();
+            Console.WriteLine("==== Valores ====");
             array.ShowValues();
             WaitUntilClick();
         }
@@ -28,6 +29,7 @@ namespace Questao6.Models.Service
         public static void ShowInt()
         {
             ErrorArray();
+            Console.WriteLine("==== Valores em Inteiros ====");
             array.ShowValuesInt();
             WaitUntilClick();
         }
@@ -41,13 +43,17 @@ namespace Questao6.Models.Service
                 Console.WriteLine("|Digite o Valor");
                 var value = float.Parse(Console.ReadLine());
                 if (value < 0)
+                {
+                    ErrorMsg();
                     throw new ArgumentException("Error - O valor não pode ser negativo");
+                }
                 array.MultValues(value);
                 WaitUntilClick();
             }
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("Error - Formatação Invalida");
                 Thread.Sleep(1000);
                 Mult();
@@ -55,6 +61,7 @@ namespace Questao6.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 Mult();
@@ -62,10 +69,20 @@ namespace Questao6.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 Mult();
             }
+        }
+
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Na Entrada de Dados");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
         }
 
         static void ErrorArray()
@@ -73,7 +90,10 @@ namespace Questao6.Models.Service
             Console.Clear();
             if (!array.isNotEmpty)
             {
-                Console.WriteLine("O Array está vazio");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("|O Array está vazio");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("===========================");
                 Thread.Sleep(1000);
                 MenuArray.View();
             }

@@ -24,13 +24,17 @@ namespace Questao6.Models.Entities
                     Console.WriteLine("==============================");
                     var value = float.Parse(Console.ReadLine());
                     if (value < 0)
+                    {
+                        ErrorMsg();
                         throw new ArgumentException("|O valor não pode ser negativo");
+                    }
                     array[c] = value;
                 }
             }
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error de Formatação");
                 Thread.Sleep(1000);
                 AddValues();
@@ -38,6 +42,7 @@ namespace Questao6.Models.Entities
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine("|Error de Formatação");
                 Thread.Sleep(1000);
                 AddValues();
@@ -45,10 +50,20 @@ namespace Questao6.Models.Entities
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 AddValues();
             }
+        }
+
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Na Entrada de Dados");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
         }
 
         public void ShowValues()

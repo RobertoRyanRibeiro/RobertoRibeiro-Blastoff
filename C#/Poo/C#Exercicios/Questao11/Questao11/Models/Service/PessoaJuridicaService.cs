@@ -121,7 +121,10 @@ namespace Questao11.Models.Service
             Console.Clear();
             if (pessoa == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("|Error - Não existe pessoa ainda");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("=================");
                 Thread.Sleep(1000);
                 Console.Clear();
                 MenuPessoaJuridica.View();
@@ -146,9 +149,9 @@ namespace Questao11.Models.Service
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("|ERROR");
-            Console.WriteLine("=================");
+            Console.WriteLine("|Error");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("=================");
         }
 
     }

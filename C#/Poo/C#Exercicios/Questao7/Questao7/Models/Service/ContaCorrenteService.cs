@@ -59,6 +59,7 @@ namespace Questao7.Models.Service
             catch (FormatException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("|Error - Formatação Invalida");
                 Thread.Sleep(1000);
@@ -67,6 +68,7 @@ namespace Questao7.Models.Service
             catch (OverflowException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CriarConta();
@@ -74,6 +76,7 @@ namespace Questao7.Models.Service
             catch (ArgumentException ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CriarConta();
@@ -82,6 +85,7 @@ namespace Questao7.Models.Service
             catch (Exception ex)
             {
                 Console.Clear();
+                ErrorMsg();
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000);
                 CriarConta();
@@ -91,6 +95,13 @@ namespace Questao7.Models.Service
         public static void DescontaMensalidade()
         {
             ErrorConta();
+            if(poupanca.Mensalidade > poupanca.Saldo)
+            {
+                ErrorMsg();
+                Console.WriteLine("|Não tem dinheiro para pagar a mensalidade");
+                Thread.Sleep(1000);
+                MenuContaCorrente.View();
+            }
             poupanca.DescontaMensalidade();
             MenuContaCorrente.View();
         }
@@ -101,13 +112,23 @@ namespace Questao7.Models.Service
             poupanca.ShowDados();
             EsperarClick();
         }
-
+        static void ErrorMsg()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("|Error - Exception");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("===========================");
+        }
         static void ErrorConta()
         {
             Console.Clear();
             if (poupanca == null)
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("|Error - Conta Vazia");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("===========================");
                 Thread.Sleep(1000);
                 MenuContaCorrente.View();
             }

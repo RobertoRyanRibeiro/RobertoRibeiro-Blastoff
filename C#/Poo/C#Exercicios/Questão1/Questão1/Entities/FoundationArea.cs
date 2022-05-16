@@ -16,6 +16,10 @@ namespace Questão1.Entities
 
         public FoundationArea(double width, double length, Floor floor, Baseboard baseboard) : base(width, length)
         {
+            if(width == 0 || length == 0)
+                IsInvalid = true;  
+
+
             Floor = floor;
             Baseboard = baseboard;
 
@@ -42,7 +46,7 @@ namespace Questão1.Entities
         {
             if (IsInvalid)
             {
-                AddNotification(new Notification("Formatação", "Um valor é negativo"));
+                AddNotification(new Notification("Formatação", "Valor Invalido"));
                 PrintNotification();
                 return "";
             }

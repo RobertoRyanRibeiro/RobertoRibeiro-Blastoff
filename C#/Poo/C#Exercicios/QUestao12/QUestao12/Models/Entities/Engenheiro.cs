@@ -25,6 +25,9 @@ namespace Questao12.Models.Entities
         public override void ExibirInfo()
         {
             base.ExibirInfo();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" == Extra ==");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"|Crea - {Crea}");
             Console.WriteLine($"|Categoria - {Categoria}");
             Console.WriteLine($"|Projeto - {ProjetoAtual}");

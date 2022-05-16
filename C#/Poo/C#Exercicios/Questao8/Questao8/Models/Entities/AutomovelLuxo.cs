@@ -8,6 +8,9 @@ namespace Questao8.Models.Entities
     {
 
 
+        private double totalExtra = 0;
+        private double total = 0;
+
         public bool HasArCondicionado { get; private set; } = false;
         const double arCondicionado = 2000;
 
@@ -26,7 +29,7 @@ namespace Questao8.Models.Entities
 
         public void SwitchArcondicionado()
         {
-            HasArCondicionado = true;
+            HasArCondicionado = !HasArCondicionado;
         }
         public void SwitchDirecaoHidralica()
         {
@@ -50,24 +53,32 @@ namespace Questao8.Models.Entities
             base.CalcularValor();
 
             if (HasArCondicionado)
-                valor += arCondicionado;
+                totalExtra += arCondicionado;
             if (HasDirecaoHidralica)
-                valor += dirHidralica;
+                totalExtra += dirHidralica;
             if (HasVidroEletrico)
-                valor += vidroEletrico;
+                totalExtra += vidroEletrico;
+            total = valor + totalExtra;
         }
 
 
         public override void ImprimirDados()
         {
             base.ImprimirDados();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(" = Componentes =");
+            Console.ForegroundColor = ConsoleColor.White; 
             if (HasArCondicionado)
-                Console.WriteLine("Ar-condicionado");
+                Console.WriteLine("|Ar-condicionado : Adicional($2.000)");
             if (HasDirecaoHidralica)
-                Console.WriteLine("Direção Hidralica");
+                Console.WriteLine("|Direção Hidralica : Adicional($1.500)");
             if (HasVidroEletrico)
-                Console.WriteLine("Vidro Eletrico");
+                Console.WriteLine("|Vidro Eletrico : Adicional($800)");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" = Total =");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"|Total Extras - {totalExtra:C}");
+            Console.WriteLine($"|Valor Total - {total:C}");
         }
     }
 }

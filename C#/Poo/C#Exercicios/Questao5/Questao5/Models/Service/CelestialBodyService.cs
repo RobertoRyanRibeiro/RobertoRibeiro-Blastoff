@@ -26,7 +26,7 @@ namespace Questao5.Models.Service
             if (!nomeFormat.IsMatch(nome))
                 throw new ArgumentException("|Error - Formatação do Nome Invalido");
             //=========================Tipo=========================
-            Console.WriteLine("|Digite o Tipo do Corpo Celeste A-Asteroide P-Planeta N-Nebula");
+            Console.WriteLine("|Digite o Tipo do Corpo Celeste A-Asteroide P-Planeta N-Nebula (Qualquer Op além destas será considerado Asteroide)");
             Console.WriteLine("===============================");
             var tipoC = char.Parse(Console.ReadLine().ToUpper());
             if (tipoC == ' ')
