@@ -44,7 +44,7 @@
                 <TextBlock HorizontalAlignment="Center" FontSize="35" x:Name="ID"></TextBlock>
                 
                 <!-- Load -->
-                <MediaElement  LoadedBehavior="Play" MediaEnded="Loading_MediaEnded" HorizontalAlignment="Center" x:Name="Loading" Visibility="Hidden" Width="350" Source="load_loader.gif"/>
+                <MediaElement  LoadedBehavior="Play" MediaEnded="Loading_MediaEnded" HorizontalAlignment="Center" x:Name="Loading" Visibility="Hidden" Width="350" />
             </StackPanel>
 
 

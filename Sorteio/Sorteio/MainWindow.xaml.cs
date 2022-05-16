@@ -4,6 +4,7 @@ using Sorteio.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Configuration;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,18 +27,22 @@ namespace Sorteio
     public partial class MainWindow : Window
     {
 
-        string path = "Lista_de_funcionarios.xlsx";
+       
+        string path = ConfigurationManager.AppSettings["Lista"];
+        string music = ConfigurationManager.AppSettings["Music"];
+        string load = ConfigurationManager.AppSettings["Load"];
 
         public MainWindow()
         {
             InitializeComponent();
             //Inserindo Lista
+            Loading.Source = new Uri(load,UriKind.RelativeOrAbsolute);
             ListFunc();
         }
 
         //Listar
         private void ListFunc()
-        {
+        {   
             NavBar.Children.Clear();
             foreach (var func in DB.Ler(path))
             {
@@ -83,7 +88,7 @@ namespace Sorteio
 
             //Sound
             MediaPlayer media = new MediaPlayer();
-            media.Open(new Uri("piao-do-bau-com-musica.mp3", UriKind.RelativeOrAbsolute));
+            media.Open(new Uri(music, UriKind.RelativeOrAbsolute));
             media.Play();
 
             await Task.Delay(23000);
