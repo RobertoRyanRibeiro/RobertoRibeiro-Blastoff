@@ -1,0 +1,15 @@
+//Criar o Banco	
+create DATABASE [Curso]
+
+//Deletar o banco
+drop database [Curso]
+
+//Comando que Deleta todos os Processos ativos no banco e deleta o msm
+use[master]
+
+DECLARE @kill VARCHAR(8000) = ' ';
+SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5),session_id)  
+from sys.dm_exec_sessions
+where database_id = DB_ID('curso')
+
+Exec(@kill)
