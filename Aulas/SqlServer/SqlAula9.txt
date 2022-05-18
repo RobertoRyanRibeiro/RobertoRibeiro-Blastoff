@@ -1,0 +1,28 @@
+//Indices
+CREATE TABLE Aluno(
+    [Id] INT NOT NULL,
+    [Nome] NVARCHAR(80) NOT NULL,
+ 
+    PRIMARY KEY([Id])
+)
+GO
+
+//**INDICE**
+CREATE INDEX [IX_Aluno_Email] ON [Aluno]([Email])
+DROP INDEX [IX_Aluno_Email] ON [Aluno]
+
+CREATE TABLE [Curso](
+    //**Identity**
+    [Id] INT NOT NULL IDENTITY(1,1),
+    [Id] UNIQUEIDENTIFY NOT NULL,
+
+    [Nome] NVARCHAR(80) NOT NULL,
+    [CategoriaId] INT NOT NULL, 
+
+    CONSTRAINT [PK_Curso] PRIMARY KEY([Id])
+    //Foreign Key
+    CONSTRAINT [FK_CursoCategoria] FOREIGN KEY([CategoriaId])
+      REFERENCES [Categoria]([Id])
+)
+GO
+...

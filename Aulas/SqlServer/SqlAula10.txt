@@ -1,0 +1,36 @@
+//Insert
+CREATE TABLE [Curso](
+    //**Identity**
+    [Id] INT NOT NULL IDENTITY(1,1),
+    [Id] UNIQUEIDENTIFY NOT NULL,
+
+    [Nome] NVARCHAR(80) NOT NULL,
+    [CategoriaId] INT NOT NULL, 
+
+    CONSTRAINT [PK_Curso] PRIMARY KEY([Id])
+    //Foreign Key
+    CONSTRAINT [FK_CursoCategoria] FOREIGN KEY([CategoriaId])
+      REFERENCES [Categoria]([Id])
+)
+GO
+
+CREATE TABLE [Categoria](
+   [Id] INT NOT NULL IDENTITY(1,1),
+   [Nome] NVARCHAR(80) NOT NULL,
+
+   CONSTRAINT [PK_Categoria] PRIMARY KEY([Id]) 
+)
+GO
+...
+
+//**INSERT**
+   INSERT INTO [Categoria]([Nome]) VALUES('BackEnd')
+   INSERT INTO [Categoria]([Nome]) VALUES('FrontEnd')
+   INSERT INTO [Categoria]([Nome]) VALUES('Mobile')
+
+   INSERT INTO [Curso]([Nome], [CategoriaId] VALUES ('Fundamentos C#',1)
+   INSERT INTO [Curso]([Nome], [CategoriaId] VALUES ('Fundamentos OPP',2)
+   INSERT INTO [Curso]([Nome], [CategoriaId] VALUES ('Angular',3)
+   INSERT INTO [Curso]([Nome], [CategoriaId] VALUES ('Flutter',4)
+
+   INSERT INTO [Curso] VALUES('Flutter e SqlLite',3)

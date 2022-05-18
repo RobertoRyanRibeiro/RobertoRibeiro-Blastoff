@@ -1,0 +1,23 @@
+//Criando Tabela
+CREATE TABLE [Aluno](
+    [Id] INT NOT NULL,
+    [Nome] NVARCHAR(80) NOT NULL,
+    [Email] NVARCHAR(180) NOT NULL UNIQUE,
+    [Nascimento] DATETIME NULL,
+    [Active] BIT NOT NULL DEFULT(0),
+
+    PRIMARY KEY([Id])
+)
+GO
+
+//Primary Key
+    PRIMARY KEY([Id])  //Simples
+    PRIMARY KEY([Id],[Email])  //Composta
+    CONSTRAINT [NOME_KEY] PRIMARY KEY([Id]) //Criando uma chave apartir do comando CONSTRAINT
+
+//Unique
+    CONSTRAINT [NOME_UNIQUE] UNIQUE([Email]) //Criando uma referencia para o campo Email que é unique usando CONSTRAINT
+
+//Drop CONSTRAINT
+    ALTER TABLE [Aluno]
+      DROP CONSTRAINT [NOME_KEY/NOME_UNIQUE]

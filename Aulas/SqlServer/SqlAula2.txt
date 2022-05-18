@@ -1,0 +1,11 @@
+//Para garantir que está usando o banco certo é usar
+Use [BANCO]
+
+//Criando Tabela
+CREATE TABLE [Aluno](
+    [Id] INT,
+    [Nome] CHAR, VARCHAR, NVARCHAR
+    [Nascimento] DATETIME,
+    [Active] BIT,
+)
+GO

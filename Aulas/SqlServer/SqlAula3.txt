@@ -1,0 +1,13 @@
+//Add um Valor na Tabela
+ALTER TABLE [Aluno]
+  ADD [Document] NVARCHAR(11)
+
+//Dropar uma coluna da Tabela **ATENÇÃO SEMPRE FAÇA UM BACKUP ANTES DE DAR DROP**
+ALTER TABLE [ALUNO]
+  DROP COLUM [DOCUMENT]
+
+DROP TABLE [Aluno]  
+
+//Alterar uma Tabela
+ALTER TABLE [ALUNO]
+  ALTER COLUM [DOCUMENT] CHAR(11)
