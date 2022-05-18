@@ -1,0 +1,34 @@
+//DB
+CREATE TABLE [Curso](
+    //**Identity**
+    [Id] INT NOT NULL IDENTITY(1,1),
+    [Id] UNIQUEIDENTIFY NOT NULL,
+
+    [Nome] NVARCHAR(80) NOT NULL,
+    [CategoriaId] INT NOT NULL, 
+
+    CONSTRAINT [PK_Curso] PRIMARY KEY([Id])
+    //Foreign Key
+    CONSTRAINT [FK_CursoCategoria] FOREIGN KEY([CategoriaId])
+      REFERENCES [Categoria]([Id])
+)
+GO
+
+CREATE TABLE [Categoria](
+   [Id] INT NOT NULL IDENTITY(1,1),
+   [Nome] NVARCHAR(80) NOT NULL,
+
+   CONSTRAINT [PK_Categoria] PRIMARY KEY([Id]) 
+)
+GO
+...
+
+//**Queries**
+   SELECT TOP 100
+     [Id],[Nome],[CategoriaId]
+   FROM 
+     [Categoria]
+   WHERE	
+     [CategoriaId] != 1 OR
+     [Id] = 1
+     [Id] IS NOT NULL/IS NULL 1		

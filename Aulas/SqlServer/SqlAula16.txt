@@ -1,0 +1,7 @@
+SELECT TOP 100 
+  MIN([Id])
+  MAX([Id])
+  COUNT([Id])
+  AVG([Id])
+  SUM([Id])
+FROM [Categoria]

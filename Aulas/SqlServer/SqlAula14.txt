@@ -1,0 +1,21 @@
+SELECT * FROM [Categoria]
+{//Não Recomendavel
+UPDATE TABLE 
+   [Categoria]
+SET
+   [Nome] = ''
+WHERE
+}   
+
+
+BEGIN TRANSACTION
+  UPDATE
+    [Categoria]
+  SET
+    [Nome] = 'Backend'
+  WHERE
+    [Id] = 1
+ROLLBACK
+
+//Commit 
+COMMIT - Para confirmar os resultados

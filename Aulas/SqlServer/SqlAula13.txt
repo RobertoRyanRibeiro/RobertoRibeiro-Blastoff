@@ -1,0 +1,8 @@
+//**Queries**
+   SELECT TOP 100
+     [Id],[Nome],[CategoriaId]
+   FROM 
+     [Categoria]
+   ORDER BY 	
+     [Nome] ,[Id],[Categoria]
+     [Nome] DESC/ASC

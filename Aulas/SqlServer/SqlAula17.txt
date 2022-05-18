@@ -1,0 +1,8 @@
+SELECT TOP 100 
+  *
+FROM 
+  [Curso]
+WHERE
+  [Nome] LIKE '%Fundamentos%' //Contém
+  [Nome] LIKE '%Fundamentos' //Começa Com
+  [Nome] LIKE 'Fundamentos%'//Termina com

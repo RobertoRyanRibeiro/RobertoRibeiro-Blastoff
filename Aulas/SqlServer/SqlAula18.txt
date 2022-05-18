@@ -1,0 +1,7 @@
+SELECT TOP 100 
+  *
+FROM 
+  [Curso]
+WHERE
+  [Id] IN (1, 2)
+  [Id] BETWEEN 1 AND 2
