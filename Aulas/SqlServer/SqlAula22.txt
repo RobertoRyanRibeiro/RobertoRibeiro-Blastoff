@@ -1,0 +1,26 @@
+SELECT TOP 100 
+  *
+FROM 
+  [Curso]
+
+UNION
+
+SELECT TOP 100 
+  *
+FROM 
+  [Categoria]
+
+
+SELECT TOP 100 
+  [Id],[Nome]
+FROM 
+  [Curso]
+
+UNION / UNION ALL(Evita os Duplicados)
+
+SELECT TOP 100 
+  [Id],[Nome]
+FROM 
+  [Categoria]
+
+

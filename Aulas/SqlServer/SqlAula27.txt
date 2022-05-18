@@ -1,0 +1,14 @@
+CREATE OR ALTER PROCEDURE [spListCourse] 
+  @Category NVARCHAR(60),
+  @Param2 INT
+AS
+  
+  DECLARE @Id INT 
+  SET @Id = 9  
+  SET @CategoryId = (SELECT TOP 1 [Id] FROM [Categoria] WHERE [Nome] = 'Backend')  
+  SET @CategoryId = (SELECT TOP 1 [Id] FROM [Categoria] WHERE [Nome] =  Category)  
+
+  SELECT * FROM [Course] WHERE [Id] = @Id
+  SELECT * FROM [Course] WHERE [CategoriaId] = @CategoryId
+
+EXEC [spListCourse] 'Data',2
