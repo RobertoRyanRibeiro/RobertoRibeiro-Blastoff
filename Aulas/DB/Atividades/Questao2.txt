@@ -1,0 +1,7 @@
+A)INSERT INTO [Empresa] (Nome,CPF,Cargo,nProjetos)/ INSERT INTO [Empresa]
+  VALUES ('nome','###.###.###-##','cargo',0);
+B)SELECT TOP 1 * FROM [Empresa] ORDER BY [nProjetos] & SELECT TOP 1 * FROM [Empresa] ORDER BY [nProjetos] DESC
+C)SELECT AVG([nProjetos]) FROM [Empresa] WHERE [Cargo] NOT LIKE '%GP%';
+D)SELECT * FROM [Empresa] WHERE [nProjetos] >= 4;
+E)SELECT DISTINCT [Cargo] FROM [Empresa];
+F)SELECT [Nome],[CPF],[nProjetos] FROM Empresa Where [Cargo] LIKE '%Desenvolvedor%'
