@@ -1,10 +1,10 @@
-//Add um Valor na Tabela
+//Add uma Coluna na Tabela
 ALTER TABLE [Aluno]
   ADD [Document] NVARCHAR(11)
 
 //Dropar uma coluna da Tabela **ATENÇÃO SEMPRE FAÇA UM BACKUP ANTES DE DAR DROP**
 ALTER TABLE [ALUNO]
-  DROP COLUM [DOCUMENT]
+  DROP COLUMN [DOCUMENT]
 
 DROP TABLE [Aluno]  
 

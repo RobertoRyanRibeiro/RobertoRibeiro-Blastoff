@@ -1,0 +1,128 @@
+//-- EXEMPLO 1--//
+
+CREATE DATABASE empresa;
+
+USE empresa;
+
+CREATE TABLE Departamento(
+   idDepartamento INT AUTO_INCREMENT PRIMARY KEY,
+   nome VARCHAR(45) NOT NULL,
+   qtd_projeto INT    
+);
+
+
+CREATE TABLE Empregado(
+    idEmpregado INT NOT NULL PRIMARY KEY,
+    nome VARCHAR(30) NOT NULL,
+    endereco VARCHAR(30) NOT NULL
+    fkDepartamento 
+    CONSTRAINT fk_Departamento FOREING KEY (fkDepartamento) REFERENCE Departamento(idDepartamento)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
+
+CREATE TABLE Projeto(
+    idProjeto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL,
+    setor VARCHAR(45) NOT NULL,
+);
+
+CREATE TABLE Empregado_Has_Projeto(
+    fkEmpregado INT,
+    fkProjeto INT,
+    data_conclusao DATE,
+    PRIMARY KEY(fkEmpregado,fkProjeto),
+    CONSTRAINT fk_Empregado FOREING KEY (fkEmpregado) REFERENCES Empregado(idEmpregado),
+    CONSTRAINT fk_Projeto FOREING KEY (fkProjeto) REFERENCES Projeto(idProjeto)
+);
+
+
+INSERT INTO Empregado() VALUES ('1','Felipe','Rua1'),
+('2','Felipe','Rua2'),
+('3','Fernando','Rua3');
+
+INSERT INTO Empregado(idEmpregado,nome,endereco) VALUES ('1','Flavio','Rua1'),
+('2','Fernando','Rua2'),
+('3','Felipe','Rua3');
+
+INSERT INTO Empregado(idEmpregado,nome,endereco) VALUES ('1','Flavio','Rua1'),
+('2','Fernando','Rua2'),
+('3','Felipe','Rua3');
+
+INSERT INTO Projeto(nome,setor) VALUES ('Guitarra',3),('Bateria',50),('Amplificador Valvulado',30)
+
+INSERT INTO Empregado_Has_Projeto() VALUES (3,2,'2021-12-25'),(2,1,'2021-04-01'),(2,3,'2021-04-01')
+
+
+DELETE FROM Empregado WHERE idEmpregado = 1;
+
+
+SELECT * FROM Empregado_Has_Projeto;
+SELECT * FROM Empregado;
+SELECT * FROM Projeto;
+DROP TABLE Projeto;
+SELECT nome FROM Empregado;
+SELECT DISTINCT nome FROM Empregado;
+SELECT DISTINCT nome,idEmpregado,idEmpregado+4 FROM Empregado;
+SELECT * FROM Empregado ORDER BY idEmpregado ASC ;/ SELECT * FROM Empregado ORDER BY i ; / SELECT * FROM Empregado ORDER BY nome DESC;
+
+//-- EXEMPLO 2--//
+
+CREATE DATABASE empregado;
+
+USE empregado;
+
+CREATE TABLE Empregado(
+    idEmpregado INT NOT NULL PRIMARY KEY,
+    nome VARCHAR(30) NOT NULL,
+    endereco VARCHAR(30) NOT NULL,
+    fkDepartamento INT
+    CONSTRAINT 
+);
+
+CREATE TABLE Dependente(
+    idDependente INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL,
+    endereco VARCHAR(45) NOT NULL,
+    fkEmpregado INT
+    CONSTRAINT fk_Empregado FOREING KEY fkEmpregado REFERENCE Empregado(idEmpregado)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
+
+
+
+INSERT INTO Dependentes(nome, endereco, fkEmpregado) VALUES ('Vanessa', 'Rua10',2),
+('Vania', 'Rua3',3),('João', 'Rua50',2),('Maria', 'Rua50',2);
+
+
+
+SELECT * FROM Dependentes GROUP BY idDependente HAVING (idDependente >= 2);
+
+SELECT * FROM Dependentes WHERE nome LIKE 'F1___%';
+
+SELECT * FROM Dependentes WHERE nome LIKE 'VA___';
+
+SELECT * FROM Dependentes WHERE idDependentes = 2 AND fkEmpregado = 3; / SELECT * FROM Dependentes WHERE idDependentes = 2 OR fkEmpregado = 3;
+
+SELECT * FROM Dependentes WHERE idDependentes BETWEEN 2 AND 4;
+
+
+//-- EXEMPLO 3--//
+
+SELECT AVG(idDependente) FROM Dependentes;
+SELECT COUNT(idDependente) FROM Dependentes;
+SELECT MAX(idDependente), nome FROM Dependentes;
+SELECT MIN(idDependente), nome FROM Dependentes;
+SELECT * FROM Dependentes WHERE idDependente IN (SELECT MAX (IdDependete) FROM Dependentes);
+SELECT E.nome, P.nome, EP.data_conclusao FROM Empregado AS E JOIN  Empregado_Has_Projeto AS EP ON E.idEmpregado = EP.fkEmpregado JOIN P.idProjeto AS P
+ON P.idProjeto = EP.fkProjeto;
+SELECT E.nome, P.nome, EP.data_conclusao FROM Empregado AS E LEFT OUTER JOIN  Empregado_Has_Projeto AS EP ON E.idEmpregado = EP.fkEmpregado 
+LEFT OUTER JOIN P.idProjeto AS P ON P.idProjeto = EP.fkProjeto;
+
+
+SELECT E.nome, D.nome FROM Empregado AS E JOIN Dependentes AS D; 
+ON D.fkEmpregado = E.idEmpregado ORDER BY D.nome DESC; 
+
+
+

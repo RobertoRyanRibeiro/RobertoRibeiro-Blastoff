@@ -1,0 +1,142 @@
+CREATE DATABASE Aula;
+USE Aula;
+
+SET GLOBAL log_bin_trust_function_creators = 1;
+
+CREATE TABLE Produto(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+    nome VARCHAR(45);
+);
+
+DELIMITER $$
+    CREATE PROCEDURE cadProd(IN nome_tabala VARCHAR(45))
+    BEGIN
+      INSERT INTO Produto(nome) VALUES (nome_tabela);
+      SELECT * FROM Produto;
+    END $$
+DELIMITER ;
+
+CALL cadProd('Piano');
+CALL cadProd('Flauta');
+CALL cadProd('Guitarra');
+SELECT * FROM PRODUTO;
+
+DELIMITER $$
+     CREATE PROCEDURE soma(num1 INT, num2 INT)
+     BEGIN
+       SELECT num1 + num2 AS SOMA;
+     END $$
+DELIMITER ;
+
+CALL SOMA(-10,7);
+
+SELECT id, nome FROM Produto;
+
+
+//**EXEMPLO2**//
+
+DELIMITER  $$
+    CREATE PROCEDURE testeif(IN num1 INT,IN num2 INT)
+    BEGIN
+      DECLARE soma INT;
+      DECLARE resultado VARCHAR(15);
+      SET soma = num1+num2;
+
+      IF soma > 0 THEN
+         SET resultado = 'Positivo';
+      ELSE IF soma < 0 THEN
+         SET resultado = 'Negativo';
+      ELSE
+         SET resultado = 'Neutro';
+      END IF;
+      SELECT CONCAT('A soma entre ',num1,' e ',num2,' é: ', resultado) Resultado; 
+    END $$
+DELIMITER ;
+
+CALL testeif(2,2);
+CALL testeif(-10,3);
+CALL testeif(0,-5);
+
+
+//**EXEMPLO3**//
+DELIMITER $$	
+    CREATE PROCEDURE fatorial(num INT);  
+    BEGIN
+      DECLARE reposta INT;
+      SET resposta = 1;
+      
+      WHILE num > 0 DO
+          SET resposta = resposta * num;
+          SET num = num - 1;
+      END WHILE;
+
+      SELECT CONCAT('A Fatorial de ',num,' é: ', resposta) AS Resposta;
+    END $$
+DELIMITET ;
+
+CALL fatorial(3);
+
+//**EXEMPLO4**//
+
+DELIMITER $$
+CREATE FUNCTION mult(num1 DECIMAL(10,2),num2 DECIMAL(10,2)) RETURNS DECIMAL(10,2) /
+CREATE FUNCTION mult(num1 FLOAT,num2 FLOAT) RETURNS FLOAT
+BEGIN 
+   RETURN num1*num2;
+END $$
+DELIMITER ;
+
+SELECT mult(3,2);
+
+//**EXEMPLO5**//
+
+USE Aula;
+
+CREATE TABLE Aluno(
+    id NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(60),
+    nota1 INT,
+    nota2 INT,
+    faltas INT
+);
+
+
+DELIMITER $$
+   CREATE FUNCTION situacao(nota_1 INT, nota_2 INT, faltas_aluno INT) RETURNS VARCHAR(15);
+   BEGIN
+      DECLARE media FLOAT;
+      DECLARE resposta VARCHAR(15);
+      
+      SET media = (nota_1 + nota_2)/2;
+      IF media >= 60 AND faltas_aluno <= 10 THEN
+         SET resposta = 'Aprovado';
+      ELSEIF media < 30 OR faltas_aluno > 10 THEN
+        SET resposta = 'Reprovado';
+      ELSEIF media > 30 AND media < 60 AND faltas_aluno <= 10 THEN
+        SET resposta = 'NP3';
+      END IF
+
+      RETURN resposta;
+   END $$
+DELIMITER ;
+
+SELECT situacao(100,100,20);
+SELECT situacao(60,35,2);
+
+INSERT INTO Aluno(nome,nota1,nota2,faltas) VALUES ('Flavio',35,60,2),('Rita',100,100,20),('João',96,60,2);
+
+SELECT nome,situacao(nota1,nota2, faltas) FROM Aluno;
+
+SELECT * FROM Aluno;
+
+DELIMITER $$
+   CREATE FUNCTION avalia(aluno_nome VARCHAR(60),nota_1 INT, nota_2 INT, faltas_aluno INT) RETURNS VARCHAR(15);
+   BEGIN
+      DECLARE resultado VARCHAR(15);
+      SET resultado = (SELECT situacao(nota_1,nota_2, faltas_aluno));
+
+      IF resultado = 'Aprovado' THEN
+        INSERT INTO Aluno (nome,nota1,nota2,faltas) VALUES (aluno_nome,nota_1,nota_2,faltas_aluno);
+      END IF;
+   END $$
+DELIMITER ;

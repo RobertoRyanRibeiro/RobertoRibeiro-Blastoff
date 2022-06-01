@@ -1,0 +1,64 @@
+DROP DATABASE IF EXISTS aula3;
+CREATE TABLE aula3;
+
+USE aula3;
+
+CREATE TABLE usuario(
+  Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Nome VARCHAR(45),
+  Ano_nasc DATE,
+  Sexo ENUM('M','F'),
+  Pais VARCHAR(15)
+);
+
+SELECT * FROM usuario;
+
+# Inserindo dados na Tabela
+
+INSERT INTO usuario (Nome,Ano_nasc,Sexo,Pais) Values('Fulano','1990-12-27','M','Brasil');  /
+INSERT INTO usuario (Nome,Ano_nasc,Sexo,Pais) Values('Fulano','1990-12-27','M','Brasil'),('Fulano','1990-12-27','M','Brasil');
+
+INSERT INTO usuario () VALUES(default,'Rafael','1996-06-30','M',Brasil);
+
+INSERT INTO usuario (Nome,Sexo,Pais) VALUES ('Leticia','F','Italia');
+
+# Atualizando a Tabela
+
+UPDATE usuario SET Nome = 'Jimi' WHERE Id = 3;
+UPDATE usuario SET Ano_nasc = '1992-11-27', pais = 'Inglaterra WHERE Id = 3;
+
+# Excluindo Registros
+DELETE FROM usuario WHERE Id = 2;
+
+
+# Outro Tabela
+
+CREATE TABLE usuario(
+  Cpf DECIMAL(11) NOT NULL PRIMARY KEY,
+  Nome VARCHAR(45),
+  Idade INT,
+  Telefone VARCHAR(14),
+  Cidade VARCHAR(40),
+  TotalCompra = FLOAT
+);
+
+INSERT INTO Cliente() Values(...);
+
+SELECT * FROM Cliente;
+
+SELECT Nome, Telefone, Cidade FROM Cliente;
+
+SELECT Nome, Idade, Cidade FROM Cliente WHERE Cidade = 'Pouso Alegre;	
+
+SELECT Nome, Cidade, TotalCompra FROM Cliente WHERE TotalCompra >= 100 and not Cidade = 'Itajubá';
+
+SELECT min(TotalCompra), max(TotalCompra), sum(TotalCompra), avg(TotalCompra) FROM Cliente;
+
+SELECT nome,idade FROM Cliente WHERE Idade in (SELECT min(Idade) FROM Cliente);
+
+SELECT * FROM  Cliente WHERE Nome LIKE 'Jo___%';
+
+SELECT * FROM Cliente LIMIT 4;
+
+SELECT DISTINCT Cidade FROM Cliente
+

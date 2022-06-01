@@ -1,7 +1,7 @@
 SELECT TOP 100 
   [Curso].[Id],
   [Curso].[Nome],
-  [Categoria].[Id] AS [Categoria],
+  [Categoria].[Id] AS [Categorias],
   [Categoria].[Nome]
 FROM 
   [Curso]

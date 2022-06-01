@@ -1,0 +1,26 @@
+CREATE DATABASE [DbCliente];
+
+USE [DbCliente];
+
+CREATE TABLE [Cliente] (
+  CPF BIGINT NOT NULL,
+  Nome NVARCHAR(120) NOT NULL,
+  Endereco NVARCHAR(120) NOT NULL,
+  Ano_Nasc DATE NOT NULL,
+  CONSTRAINT PK_Cliente PRIMARY KEY (CPF)
+);
+
+
+INSERT INTO Cliente (CPF, Nome, Endereco, Ano_Nasc) VALUES (12345678910,'Flavio','Rua 1','1998-09-04');
+INSERT INTO Cliente (CPF, Nome, Endereco, Ano_Nasc) VALUES (15894567843,'Mario','Rua 2','1985-10-05');
+INSERT INTO Cliente (CPF, Nome, Endereco, Ano_Nasc) VALUES (02345697412,'Leticia','Rua 3','1999-07-02');
+
+UPDATE [Cliente] SET [Nome] = 'Leticia' WHERE [CPF] = 02345697412;
+
+SELECT
+  [CPF],  
+  [Nome]
+FROM 
+  [Cliente];
+
+DELETE FROM Cliente WHERE CPF = 12345678910;

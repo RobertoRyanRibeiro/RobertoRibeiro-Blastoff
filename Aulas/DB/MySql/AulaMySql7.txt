@@ -1,0 +1,98 @@
+CREATE DATABASE aula13;
+
+USE aula13;
+
+
+CREATE TABLE Estoque(
+    cod_item INT PRIMARY KEY,
+    qtd_disponivel INT
+);
+
+CREATE TABLE itens_solicitacao(
+    id_solicitacao INT AUTO_INCREMENT PRIMARY KEY,
+    cod_item INT NOT NULL,
+    nome VARCHAR(20),
+    qtd INT 
+);
+
+INSERT INTO Itens_solicitacao(cod_item,nome, qtd) VALUES (100, 'Resistor 100k',5),(120, 'Resistor 100n',2),(130, 'Transistor TBJ',1);
+
+INSERT INTO estoque(cod_item , qtd_disponivel)
+VALUES (100,1500),(110,500),(120,300),(130,600);
+
+SELECT * FROM Itens_solicitacao;
+
+CREATE VIEW compra AS (
+    SELECT I.nome AS 'item', E.qtd_disponivel AS 'Quantidade de Estoque' FROM Itens_solicitacao AS I JOIN estoque AS E
+    ON E.cod_item = I.cod_item / USING(cod_item) #//**Quando as Tabelas possuem colunas com Nomes iguais**//
+    #OR
+    SELECT I.nome 'item', E.qtd_disponivel 'Quantidade de Estoque' FROM Itens_solicitacao I JOIN estoque E
+    USING(cod_item)
+    #OR
+    SELECT I.nome AS 'item', E.qtd_disponivel AS 'Quantidade de Estoque' FROM Itens_solicitacao AS I JOIN estoque AS E
+    WHERE E.cod_item = I.cod_item / USING(cod_item) 
+);
+
+SELECT * FROM compra;
+
+
+//**Exemplo2**//
+
+CREATE DATABASE aula13;
+USE aula13;
+
+SET SQL_SAFE_UPDATES = 0;
+
+CREATE TABLE conta(
+   numero INT PRIMARY KEY,
+   total DECIMAL(10,2);
+);
+
+CREATE TRIGGER ins_soma BEFORE INSERT ON CONTA
+FOR EACH ROW
+    SET @soma = @soma + NEW.total;
+    
+SET soma = 0;
+INSERT INTO conta VALUES (137,14.98),(141,1937.50),(97,100.00);
+SELECT @soma;
+
+DELETE FROM conta WHERE numero >=0;
+
+DELIMITER $$
+
+CREATE TRIGGER upd_ckeck BEFORE UPDATE ON conta FOR EACH ROW 
+BEGIN
+   IF NEW.total < 0 THEN
+       SET NEW.total = 0;
+   ELSEIF NEW.total > 100 THEN    
+       SET NEW.total = 100;
+   END IF;   
+END $$
+DELIMITER ;
+
+UPDATE conta SET total = 200 WHERE numero = 137;
+
+//**Exemplo3**//
+
+CREATE TABLE Nomes(
+    id INT AUTO_INCREMENT PRIMARY KEY
+    nome  VARCHAR(30)
+);
+
+
+INSERT INTO Nomes(nome) VALUES('Flavio');
+SELECT * FROM Nomes;
+
+DELIMITER 
+CREATE TRIGGER atualiza AFTER UPDATE ON Nomes
+FOR EACH ROW
+BEGIN
+    SET @var_old = OLD.nome;
+    SET @var_new = NEW.nome;
+END $$
+DELIMITER ;
+
+SELECT * FROM Nomes;
+SELECT @var_old;
+SELECT @var_new;
+UPDATE Nomes SET nome = 'Fernando' WHERE id =1;

@@ -1,0 +1,29 @@
+SELECT * FROM Course
+SELECT * FROM Student
+SELECT * FROM StudentCourse
+
+
+DECLARE @studentId UNIQUEIDENTIFIER = (SELECT NEWID())
+
+INSERT INTO 
+    [Student] 
+VALUES (
+    @studentId,
+    'Roberto Ryan',
+    'hello@balta.io',
+    '12345678901',
+    '12345678',
+    NULL,
+    GETDATE()
+)
+
+INSERT INTO 
+    [StudentCourse]
+VALUES(
+    '5d1b6506-c980-8031-5957-26df00000000',
+    @studentId,
+    50,
+    0,
+    '2020-01-13 12:35:54',
+    GETDATE()
+)
