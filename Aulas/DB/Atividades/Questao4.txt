@@ -1,0 +1,12 @@
+CREATE USER Monitor;
+CREATE USER Professor;
+
+
+GRANT INSERT,SELECT,DELETE,UPDATE  ON *.* TO 'Monitor';
+GRANT ALL ON *.* TO 'Professor';
+
+SHOW GRANTS FOR 'Monitor';
+SHOW GRANTS FOR 'Professor';
+
+REVOKE INSERT ON *.* FROM 'Monitor';
+REVOKE CREATE,DROP ON *.* FROM 'Professor';
