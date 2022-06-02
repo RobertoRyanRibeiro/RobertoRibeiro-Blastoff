@@ -1,0 +1,82 @@
+DROP DATABASE IF EXISTS HEROISMO;
+
+CREATE DATABASE IF NOT EXISTS HEROISMO;
+
+USE HEROISMO;
+
+CREATE TABLE VILAO (
+	IdVilao INT NOT NULL AUTO_INCREMENT,
+    Nome VARCHAR(45) NOT NULL,
+    Num_Crimes INT NOT NULL,
+    CONSTRAINT PK_VILAO PRIMARY KEY (IdVilao)
+);
+
+CREATE TABLE AGENTE(
+	IdAgente INT NOT NULL AUTO_INCREMENT,
+    Nome VARCHAR(45) NOT NULL,
+    Endereco VARCHAR(45) NOT NULL,
+    Nascimento DATE NOT NULL,
+    Habilidade VARCHAR(45) NOT NULL,
+    Sexo VARCHAR(45) NOT NULL,
+    Email VARCHAR(45) NOT NULL,
+    CONSTRAINT PK_AGENTE PRIMARY KEY (IdAgente)
+);
+
+CREATE TABLE MISSAO(
+	IdMissao INT NOT NULL AUTO_INCREMENT,
+    DateMissao DATE NOT NULL,
+    Nome VARCHAR(45) NOT NULL,
+    LocalMissao VARCHAR(45) NOT NULL,
+    Duracao INT NOT NULL,
+    Vilao_IdVilao INT NOT NULL,
+    CONSTRAINT PK_MISSAO PRIMARY KEY (IdMissao),
+    CONSTRAINT FK_MISSAOVILAO FOREIGN KEY (Vilao_IdVilao) REFERENCES VILAO (IdVilao)
+);
+
+CREATE TABLE AGENTE_HAS_MISSAO(
+	Agente_IdAgente INT NOT NULL,
+    Missao_IdMissao INT NOT NULL,
+    CONSTRAINT PK_AGENTEHASMISSAO PRIMARY KEY (Agente_IdAgente,Missao_IdMissao),
+    CONSTRAINT FK_AGENTEID FOREIGN KEY (Agente_IdAgente) REFERENCES AGENTE (IdAgente),
+    CONSTRAINT FK_MISSAOID FOREIGN KEY (Missao_IdMissao) REFERENCES MISSAO (IdMissao)
+);
+
+INSERT INTO VILAO (Nome,Num_Crimes) VALUES
+('DARTH VADER',100),
+('DARTH REVAN',90),
+('DARTH BANE',50),
+('DARTH SIDIUS',250),
+('DARTH MAUL',45);
+
+INSERT INTO AGENTE (Nome,Endereco,Nascimento,Habilidade,Sexo,Email) VALUES
+('MASTER WINDU','Coruscant','3550-10-25','Vaapad','Masculino','MaceWinduTheBest@gmail.com'),
+('MASTER YODA','Coruscant','2500-05-15','High Connection to the Force','Masculino','YodaTheWise@gmail.com'),
+('MASTER PLO KOON','Coruscant','3510-09-05','Electric Judgment','Masculino','PloKoonTheCool@gmail.com'),
+('MASTER LUMINARA','Coruscant','3551-08-27','Light Saber','Femenino','LuminaraTheTeacher@gmail.com'),
+('MASTER OBI WAN KENOBI','Coruscant','3565-02-10','The Greater Master of The Form 2','Masculino','HelloThere@gmail.com');
+
+INSERT INTO MISSAO (DateMissao,Nome,LocalMissao,Duracao,Vilao_IdVilao) VALUES
+('3605-05-25','Isolamento','Dagobah',25,4),
+('3605-06-05','The Phantom Menace','Naabo',50,5),
+('3605-10-14','The Lord Sith','Coruscant',2,4),
+('3605-08-29','Ancient Sith','Korriban',100,3),
+('3605-01-07','The last Figth','Dagobah',25,1);
+
+INSERT INTO AGENTE_HAS_MISSAO (Agente_IdAgente,Missao_IdMissao) VALUES
+(2,1),
+(5,2),
+(1,3),
+(4,4),
+(5,5);
+
+SELECT A.Nome,A.Email,M.Nome,M.DateMissao FROM AGENTE A JOIN MISSAO M JOIN AGENTE_HAS_MISSAO B 
+ON  B.Agente_IdAgente = A.IdAgente AND B.Missao_IdMissao = M.IdMissao;
+
+SELECT M.Nome,M.DateMissao,M.Duracao,V.Nome FROM MISSAO M JOIN VILAO V 
+ON M.Vilao_IdVilao = V.IdVilao;
+
+SELECT A.Nome,M.Nome,V.Nome FROM AGENTE A JOIN MISSAO M JOIN VILAO V JOIN AGENTE_HAS_MISSAO B
+ON  B.Agente_IdAgente = A.IdAgente AND B.Missao_IdMissao = M.IdMissao AND M.Vilao_IdVilao = V.IdVilao;
+
+
+
