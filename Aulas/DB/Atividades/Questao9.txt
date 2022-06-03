@@ -1,0 +1,82 @@
+CREATE DATABASE loja;
+
+USE loja;
+
+
+
+CREATE TABLE compra(
+
+    id int not null auto_increment primary key,
+
+    preco float,
+
+    pagamento float
+
+);
+
+
+
+INSERT INTO compra (preco, pagamento) VALUES (9.5, 10.25), (18.99, 25), (3.99, 5), (8.85, 8.89), (19.49, 20);
+
+CREATE VIEW compraView AS
+SELECT COUNT(id) FROM compra WHERE preco > 10; 
+
+SELECT * FROM compraView;
+
+CREATE DATABASE estoque;
+
+USE estoque;
+
+CREATE TABLE produtos (
+
+    id INT PRIMARY KEY,
+
+    descricao VARCHAR(50) UNIQUE,
+
+    estoque INT NOT NULL
+
+);
+
+INSERT INTO produtos VALUES ('1', 'Lasanha', '10');
+
+INSERT INTO produtos VALUES ('2', 'Morango', '5');
+
+INSERT INTO produtos VALUES ('3', 'Farinha', '15');
+
+CREATE TABLE itens_venda (
+
+    id_venda INT PRIMARY KEY,
+
+    id_produto INT,
+
+    quantidade INT
+
+);
+
+DELIMITER $$
+CREATE TRIGGER baixaEstoque AFTER INSERT ON itens_venda
+FOR EACH ROW
+BEGIN
+	UPDATE produtos SET estoque = estoque-NEW.quantidade WHERE id = NEW.id_produto;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER devolucaoEstoque AFTER DELETE ON itens_venda 
+FOR EACH ROW
+BEGIN
+	UPDATE produtos SET estoque = estoque+OLD.quantidade WHERE id = OLD.id_produto;
+END$$
+DELIMITER ;
+
+DROP TRIGGER devolucaoEstoque;
+
+SELECT * FROM produtos;
+
+INSERT INTO itens_venda 
+values
+(1,1,1);
+
+DELETE FROM itens_venda WHERE id_venda = 1;
+
+
