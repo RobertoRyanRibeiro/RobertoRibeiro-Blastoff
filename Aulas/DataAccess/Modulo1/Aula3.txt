@@ -1,0 +1,27 @@
+// See https://aka.ms/new-console-template for more information
+
+using System;
+using Microsoft.Data.SqlClient;
+
+namespace BaltaDataAccess;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        const string connectionString = "Server =localhost,1433;Database=balta,User ID=sa;Password=1q2w3e4r@#$";
+
+        //var connection = new SqlConnection(connectionString);
+        //connection.Open();
+        //connection.Close();
+        //connection.Dispose();
+
+        using(var connection = new SqlConnection(connectionString))
+        {
+            Console.WriteLine("Conectado");
+        }
+
+            Console.WriteLine("Hello, World!");
+    }
+}
+

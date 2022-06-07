@@ -1,0 +1,46 @@
+// See https://aka.ms/new-console-template for more information
+
+using System;
+using BaltaDataAccess.Models;
+using Dapper;
+using Microsoft.Data.SqlClient;
+
+namespace BaltaDataAccess
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const string connectionString = "Server =localhost,1433;Database=balta,User ID=sa;Password=1q2w3e4r@#$";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                var categories = connection.Query<Category>("SELECT [Id],[Title] FROM [Category]");
+                foreach(var cate in categories)
+                {
+                    Console.WriteLine($"{cate.Id} - {cate.Title}");
+                }
+            }
+        }
+    }
+}
+
+
+//Category
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BaltaDataAccess.Models
+{
+    public class Category
+    {
+        public Guid Id { get; set; }
+        public string Title { get; set; }
+
+    }
+}
