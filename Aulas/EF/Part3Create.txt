@@ -1,0 +1,3 @@
+    var tag = new Tag { Name = "ASP.NET", Slug = "aspnet" };
+    context.Tags.Add(tag);
+    context.SaveChanges();

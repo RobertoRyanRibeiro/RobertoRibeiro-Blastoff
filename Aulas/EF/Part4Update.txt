@@ -1,0 +1,5 @@
+var tag = context.Tags.FirstOrDefault(x=>x.Id==2);
+    tag.Name = ".Net";
+    tag.Slug = "dotnet";
+    context.Update(tag);
+    context.SaveChanges();

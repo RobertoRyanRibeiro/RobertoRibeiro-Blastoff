@@ -1,0 +1,59 @@
+using Blog.Models;
+using Microsoft.Data.SqlClient;
+using System;
+using Dapper.Contrib.Extensions;
+using Blog.Repositories;
+
+namespace Blog
+{
+    class Program
+    {
+        private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;TrustServerCertificate=True;User ID=sa;Password = 1q2w3e4r@#$";
+        
+        static void Main(String[] args)
+        {
+            var connection = new SqlConnection(CONNECTION_STRING);
+            connection.Open();
+       
+            ReadUsers(connection);
+            ReadRoles(connection);
+       
+            connection.Close();
+        }
+
+        static void ReadUsers(SqlConnection connection)
+        {
+            var repository = new UserRepository(connection);
+            var users = repository.GetAll();
+            foreach (var user in users)
+                Console.WriteLine(user.Name);
+        } 
+        
+        static void ReadRoles(SqlConnection connection)
+        {
+            var repository = new RoleRepository(connection);
+            var roles = repository.GetAll();
+            foreach (var role in roles)
+                Console.WriteLine(role.Name);
+        }
+    }
+}
+
+//Role
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Dapper.Contrib.Extensions;
+
+namespace Blog.Models
+{
+    [Table("[Role]")]
+    public class Role
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Slug { get; set; }
+    }
+}

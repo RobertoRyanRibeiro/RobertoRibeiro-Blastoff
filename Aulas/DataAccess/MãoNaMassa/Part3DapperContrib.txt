@@ -1,0 +1,55 @@
+using Blog.Models;
+using Microsoft.Data.SqlClient;
+using System;
+using Dapper.Contrib.Extensions;
+
+namespace Blog
+{
+    class Program
+    {
+        private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;TrustServerCertificate=True;User ID=sa;Password = 1q2w3e4r@#$";
+
+        static void Main(String[] args)
+        {
+            ReadUsers();
+        }
+
+
+        static void ReadUsers()
+        {
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                var users = connection.GetAll<User>();
+
+                foreach (var user in users)
+                {
+                    Console.WriteLine(user.Name);
+                }
+            } 
+        }
+    }
+}
+
+//User
+using Dapper.Contrib.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Blog.Models
+{
+    [Table("[User]")]
+    public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string PasswordHash { get; set; }
+        public string Bio { get; set; }
+        public string Image { get; set; }
+        public string Slug { get; set; }
+
+    }
+}

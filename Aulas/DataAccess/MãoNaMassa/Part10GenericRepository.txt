@@ -1,0 +1,32 @@
+using Dapper.Contrib.Extensions;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Blog.Repositories
+{
+    public class Repository<TModel> where TModel : class
+    {
+        private readonly SqlConnection _connection;
+
+        public Repository(SqlConnection connection)
+            => _connection = connection;
+
+        public IEnumerable<TModel> GetAll()
+            => _connection.GetAll<TModel>();
+
+    }
+}
+
+//Program
+   static void ReadUsers(SqlConnection connection)
+        {
+            var repository = new Repository<User>(connection);
+            var users = repository.GetAll();
+
+            foreach (var user in users)
+                Console.WriteLine(user.Name);
+        } 
