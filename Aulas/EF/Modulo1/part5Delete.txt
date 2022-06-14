@@ -1,0 +1,3 @@
+var tag = context.Tags.FirstOrDefault(x=>x.Id == 2);
+    context.Remove(tag);
+    context.SaveChanges();

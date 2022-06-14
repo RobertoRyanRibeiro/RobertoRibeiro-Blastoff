@@ -1,0 +1,10 @@
+
+var posts = context
+    .Posts
+    .AsNoTracking()
+    .Include(x=>x.Author)
+    .OrderBy(x => x.LastUpdateDate)
+    .ToList();
+
+foreach (var post in posts)
+    Console.WriteLine($"{post.Title} escrito por {post.Author?.Name}");

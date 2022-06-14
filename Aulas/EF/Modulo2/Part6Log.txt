@@ -1,0 +1,16 @@
+      protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Blog;User ID=sa;Password=1q2w3e4r@#$");
+            optionsBuilder.LogTo(Console.WriteLine);
+        }
+
+var posts = context
+    .Posts
+    .AsNoTracking()
+    .Include(x=>x.Author)
+    .Include(x=>x.Category)
+    .OrderBy(x => x.LastUpdateDate)
+    .ToList();
+
+foreach (var post in posts)
+    Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category}");

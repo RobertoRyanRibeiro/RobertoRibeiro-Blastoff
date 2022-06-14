@@ -8,22 +8,14 @@ using System.Threading.Tasks;
 
 namespace Blog.Models
 {
-    [Table("Category")]
-    public class Category
+    public class User
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        [Required]
-        [MinLength(3)]
-        [MaxLength(80)]
-        [Column("Name",TypeName ="NVARCHAR")]
         public string Name { get; set; }
-        [Required]
-        [MinLength(3)]
-        [MaxLength(80)]
-        [Column("Slug", TypeName = "VARCHAR")]
+        public string Email { get; set; }
+        public string PasswordHash { get; set; }
+        public string Bio { get; set; }
+        public string Image { get; set; }
         public string Slug { get; set; }
     }
 }

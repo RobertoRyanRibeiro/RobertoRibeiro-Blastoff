@@ -1,0 +1,11 @@
+
+    //ToList
+    // Só Referencia
+    //var tags = context.Tags;
+    //ToList sempre no final
+    var tags = context.Tags.Where(x=>x.Name.Contains(".NET")).ToList(); 
+
+    foreach (var tag in tags)
+    {
+        Console.WriteLine(tag.Name);
+    }

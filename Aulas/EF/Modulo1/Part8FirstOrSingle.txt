@@ -1,0 +1,8 @@
+
+    var tag = context
+        .Tags
+        .AsNoTracking()
+        .FirstOrDefault(x => x.Id == 3);
+
+
+    Console.WriteLine(tag?.Name);
