@@ -1,0 +1,82 @@
+CREATE TABLE [Empresa] (
+    [Cnpj] VARCHAR(80) NOT NULL,
+    [Nome] VARCHAR(80) NULL,
+    [Localizacao] VARCHAR(80) NULL,
+    CONSTRAINT [PK_Empresa] PRIMARY KEY ([Cnpj])
+);
+GO
+
+
+CREATE TABLE [Computador] (
+    [Id] int NOT NULL,
+    [Nome] VARCHAR(80) NULL,
+    [Ano_Fab] INT NULL,
+    [Linha] VARCHAR(80) NULL,
+    [Modelo_Cpu] VARCHAR(80) NULL,
+    [Qtd_Cpu] INT NULL,
+    [Qtd_Ram] VARCHAR(80) NULL,
+    [Id_Empresa] VARCHAR(80) NULL,
+    CONSTRAINT [PK_Computador] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Computador_Empresa_Id_Empresa] FOREIGN KEY ([Id_Empresa]) REFERENCES [Empresa] ([Cnpj])
+);
+GO
+
+
+CREATE TABLE [Software] (
+    [Id] int NOT NULL,
+    [Nome] VARCHAR(80) NULL,
+    [AnoFab] INT NULL,
+    [Armazenamento] VARCHAR(80) NULL,
+    [Id_Empresa] VARCHAR(80) NULL,
+    CONSTRAINT [PK_Software] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Software_Empresa_Id_Empresa] FOREIGN KEY ([Id_Empresa]) REFERENCES [Empresa] ([Cnpj])
+);
+GO
+
+
+CREATE TABLE [Compativel] (
+    [Id] int NOT NULL IDENTITY,
+    [Id_Computador ] INT NULL,
+    [Id_Computador2 ] INT NULL,
+    CONSTRAINT [PK_Compativel] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Compativel_Computador_Id_Computador ] FOREIGN KEY ([Id_Computador ]) REFERENCES [Computador] ([Id]),
+    CONSTRAINT [FK_Compativel_Computador_Id_Computador2 ] FOREIGN KEY ([Id_Computador2 ]) REFERENCES [Computador] ([Id])
+);
+GO
+
+
+CREATE TABLE [Funciona] (
+    [Id] int NOT NULL IDENTITY,
+    [Id_Computador ] INT NOT NULL,
+    [Id_Software ] INT NOT NULL,
+    CONSTRAINT [PK_Funciona] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Funciona_Computador_Id_Computador ] FOREIGN KEY ([Id_Computador ]) REFERENCES [Computador] ([Id]),
+    CONSTRAINT [FK_Funciona_Software_Id_Software ] FOREIGN KEY ([Id_Software ]) REFERENCES [Software] ([Id])
+);
+GO
+
+
+CREATE INDEX [IX_Compativel_Id_Computador ] ON [Compativel] ([Id_Computador ]);
+GO
+
+
+CREATE INDEX [IX_Compativel_Id_Computador2 ] ON [Compativel] ([Id_Computador2 ]);
+GO
+
+
+CREATE INDEX [IX_Computador_IdEmpresa] ON [Computador] ([Id_Empresa]);
+GO
+
+
+CREATE INDEX [IX_Funciona_Id_Computador ] ON [Funciona] ([Id_Computador ]);
+GO
+
+
+CREATE INDEX [IX_Funciona_Id_Software ] ON [Funciona] ([Id_Software ]);
+GO
+
+
+CREATE INDEX [IX_Software_IdEmpresa] ON [Software] ([Id_Empresa]);
+GO
+
+

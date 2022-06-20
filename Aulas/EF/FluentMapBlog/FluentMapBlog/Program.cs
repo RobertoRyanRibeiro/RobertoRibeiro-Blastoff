@@ -21,6 +21,7 @@ using var context = new BlogDataContext();
 //    Slug = "backend",
 //};
 
+
 //var post = new Post()
 //{
 //    Author = user,
@@ -32,9 +33,9 @@ using var context = new BlogDataContext();
 //    CreateDate = DateTime.Now,
 //    LastUpdateDate = DateTime.Now,
 //};
-
 //context.Posts.Add(post);
 //context.SaveChanges();
+
 
 //var posts = context
 //    .Posts
@@ -47,13 +48,25 @@ using var context = new BlogDataContext();
 //foreach (var post in posts)
 //    Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category}");
 
-var post = context
-    .Posts
-    .Include(x => x.Author)
-    .Include(x => x.Category)
-    .OrderByDescending(x => x.LastUpdateDate)
-    .FirstOrDefault();
 
-post.Author.Name = "Teste";
-context.Posts.Update(post);
-context.SaveChanges();
+//var post = context
+//    .Posts
+//    .Include(x => x.Author)
+//    .Include(x => x.Category)
+//    .OrderByDescending(x => x.LastUpdateDate)
+//    .FirstOrDefault();
+
+//post.Author.Name = "Teste";
+//context.Posts.Update(post);
+//context.SaveChanges();
+
+//Lazy Load
+
+//var posts = context.Posts;
+//foreach (var post in posts)
+//{
+//    foreach(var tag in post.Tags)
+//    {
+//        Console.WriteLine(tag);
+//    }
+//}

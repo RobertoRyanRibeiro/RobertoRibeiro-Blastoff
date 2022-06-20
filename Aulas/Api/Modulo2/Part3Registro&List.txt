@@ -1,0 +1,40 @@
+using Api.Data;
+using Api.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Api.Controllers
+{
+    [ApiController]
+    public class HomeController : ControllerBase
+    {
+        [HttpGet("/")]
+        public List<TodoModel> Get([FromServices]AppDbContext context)
+        {
+            return context.Todos.ToList();
+        }
+        
+        [HttpPost("/")]
+        public TodoModel Post([FromBody]TodoModel model,[FromServices]AppDbContext context)
+        {
+            context.Todos.Add(model);
+            context.SaveChanges();
+            return model;
+        }
+
+
+    }
+}
+
+
+//Program
+using Api.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddDbContext<AppDbContext>();
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
