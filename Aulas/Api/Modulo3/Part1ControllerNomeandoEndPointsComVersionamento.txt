@@ -1,0 +1,26 @@
+using Blog.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace Blog.Controllers
+{
+    [ApiController]
+    [Route("/Home")]
+    public class CategoryController : ControllerBase
+    {
+        [HttpGet("v1/categories")]
+        public async Task<IActionResult> Get([FromServices] BlogDataContext context )
+        {
+            var category = await context.Categories.AsNoTracking().ToListAsync();
+            return Ok(category);
+        }
+
+        //[HttpGet("v2/categories")]
+        //public async Task<IActionResult> Get2([FromServices] BlogDataContext context)
+        //{
+        //    var category = await context.Categories.AsNoTracking().ToListAsync();
+        //    return Ok(category);
+        //}
+
+    }
+}
