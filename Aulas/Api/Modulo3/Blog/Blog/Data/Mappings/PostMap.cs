@@ -24,7 +24,7 @@ namespace FluentMapBlog.Mappings
             builder.Property(x => x.LastUpdateDate)
                 .IsRequired()
                 .HasColumnName("LastUpdateDate")
-                .HasColumnType("SMALLDATATIME")
+                .HasColumnType("SMALLDATETIME")
                 //.HasDefaultValueSql("GETDATE()");
                 .HasDefaultValue(DateTime.Now.ToUniversalTime());
 

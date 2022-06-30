@@ -53,7 +53,7 @@ namespace FluentMapBlog.Mappings
                    role => role.HasOne<User>()
                    .WithMany()
                    .HasForeignKey("RoleId")
-                   .HasConstraintName("FK_UserRole_UserId")
+                   .HasConstraintName("FK_UserRole_RoleId")
                    .OnDelete(DeleteBehavior.Cascade)
                );
         }
